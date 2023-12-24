@@ -1,0 +1,433 @@
+<!doctype html>
+<html>
+<head>
+    <link src="nav.css"></link>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="aa.css">
+  <style>
+    .text-custom-color {
+      color: #f4cfc6;
+    }
+    .font-tinos {
+            font-family: 'Tinos', serif;
+        }
+  .container{
+    position: relative;
+    /* width: 500px; */
+
+}
+.topright{
+    position:absolute;
+    top:15px;
+    right: 15px;
+    font-size: 30px;
+
+}
+
+.pic{
+    width: 500px;
+    height: auto;
+}
+    .img-deg{
+  float: right;
+  width:700px;
+    }
+
+
+      :root {
+    --text-01: #45413e;
+    --light-01: #f9f9f9;
+    --light-02: #ffffff;
+    --brand-01: #db7f67;
+    --brand-02: #f4cfc6;
+    --card-hover: 0px 4px 24px rgba(0, 0, 0, 0.15);
+    --card-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    --hover-timing: all 0.2s ease;
+    --nav-card-size: 240px;
+  
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+  
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+
+  header {
+    /*    width: 100%;*/
+    height: auto;
+    position: sticky;
+    top: 0;
+    /*    border: 1px solid red;*/
+    z-index: 100;
+  }
+  
+  .banner {
+    background: var(--brand-01);
+    color: var(--light-01);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    padding: 8px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  nav {
+    color: var(--text-01);
+    font-weight: 600;
+    height: 64px;
+    background: var(--light-01);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--pg-margin);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+  
+  nav ul.navigation-menu {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+    position: relative;
+    top: 0;
+  }
+  
+  nav .navigation-menu a {
+    font-size: 16px;
+    text-decoration: none;
+    color: var(--text-01);
+  }
+  
+  nav .navigation-menu > li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*    justify-items: center;*/
+  }
+  
+  nav .navigation-menu > li > a {
+    position: relative;
+    /*    border: 1px solid purple;*/
+    padding: 0 20px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+  }
+  
+  nav .navigation-menu > li:hover ul.subnav {
+    visibility: visible;
+    opacity: 1;
+    top: 64px;
+  }
+  
+  nav .navigation-menu > li > ul.subnav {
+    /*    border: 1px solid green;*/
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 66px;
+    background: var(--light-01);
+    box-shadow: var(--card-hover);
+    border-radius: 12px;
+    opacity: 0;
+    transition: var(--hover-timing);
+  }
+  
+  nav > #logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    grid-gap: 8px;
+    line-height: 100%;
+    padding-left: 40px;
+  }
+  
+  nav > #logo > span {
+    font-size: 32px;
+  }
+  
+  nav > #utility {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    grid-gap: 16px;
+  }
+  
+
+  
+  .btn-group {
+    display: flex;
+    flex-direction: row;
+    grid-gap: 16px;
+  }
+  
+  footer {
+    background: var(--text-01);
+    padding: 80px 80px 0px;
+    margin-top: 80px;
+    display: flex;
+  }
+  
+  footer ul {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 24px;
+    box-shadow: none;
+    flex: 1;
+    color: var(--light-01);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 80px;
+  }
+  
+  footer ul li a {
+    color: var(--light-01);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  footer ul li {
+    color: var(--light-01);
+    padding: 0;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    :root {
+      --pg-margin: 16px;
+    }
+
+  
+    nav {
+      position: relative;
+    }
+  
+    nav ul.navigation-menu {
+      position: absolute;
+      position: absolute;
+      top: 64px;
+      background: var(--light-01);
+      left: 0;
+      z-index: -1;
+      width: 100vw;
+    }
+  
+    nav ul.navigation-menu li a {
+      font-size: 16px;
+      /*        padding: 0 12px;*/
+      white-space: nowrap;
+    }
+  
+    nav ul.navigation-menu .subnav {
+      display: none;
+    }
+  
+    nav ul.navigation-menu > li:hover .subnav {
+      display: none;
+    }
+  
+    .btn-group {
+      flex-direction: column;
+    }
+  
+    .shop-pets,
+    .services {
+      display: flex;
+      flex-direction: column;
+      grid-gap: 24px;
+      width: 100%;
+    }
+  
+    .services > li {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .services > li > .card-image {
+      width: 100%;
+    }
+  
+    section:not(.hero) {
+      padding: var(--pg-margin);
+    }
+  
+    #locate p {
+      width: 80%;
+    }
+  
+    footer {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+  
+  @media only screen and (min-width: 600px) {
+  :root {
+    --pg-margin: 24px;
+  }
+}
+  
+    section.hero h1 {
+      --hero-text: 40px;
+      width: 60%;
+    }
+  
+    section.hero {
+      aspect-ratio: 3/2;
+      background-size: 50%;
+      background-position: 90% 70%;
+      padding-top: 64px;
+    }
+  
+    nav {
+      position: relative;
+    }
+  
+    nav ul.navigation-menu {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+    position: relative;
+    top: 0;
+  }
+  
+  nav .navigation-menu a {
+    font-size: 16px;
+    text-decoration: none;
+    color: var(--text-01);
+  }
+  
+  nav .navigation-menu > li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*    justify-items: center;*/
+  }
+  
+  nav .navigation-menu > li > a {
+    position: relative;
+    /*    border: 1px solid purple;*/
+    padding: 0 20px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+  }
+  
+  nav .navigation-menu > li:hover ul.subnav {
+    visibility: visible;
+    opacity: 1;
+    top: 64px;
+  }
+  
+  nav .navigation-menu > li > ul.subnav {
+    /*    border: 1px solid green;*/
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 66px;
+    background: var(--light-01);
+    box-shadow: var(--card-hover);
+    border-radius: 12px;
+    opacity: 0;
+    transition: var(--hover-timing);
+  }
+
+    </style>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&family=Tinos:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap" rel="stylesheet">
+
+</head>
+
+<!-- 6D6875  -->
+<body class="text-base">
+    <header>
+        <div class="banner">Let us begin with your pet adoption journey</div>
+        <nav>
+          <div id="logo">
+            <svg
+              width="40"
+              height="32"
+              viewBox="0 0 40 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12.8 32H0V21.9849C0 17.1239 4.0116 13.1839 8.96 13.1839H15.2V0.468341C15.2 0.251458 15.3792 0.0754376 15.6 0.0754376C15.7184 0.0754376 15.8308 0.127301 15.9068 0.216883L17.3616 1.92719C18.402 1.07577 19.74 0.563816 21.2 0.563816H22C23.442 0.563816 24.7656 1.06359 25.8 1.89654L27.2932 0.14066C27.3692 0.0514706 27.4812 0 27.6 0C27.8208 0 28 0.175628 28 0.392904V15.3896H23.36C17.528 15.3896 12.8 20.0337 12.8 25.7623V32Z"
+                fill="#45413E"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M29.76 17.0569V12.0875C29.76 12.0836 29.76 12.0797 29.76 12.0758V6.79004C29.76 6.57435 29.9392 6.4 30.16 6.4C30.266 6.4 30.3676 6.44095 30.4424 6.51389L31.9576 7.98784C32.7864 7.42501 33.7936 7.09504 34.88 7.09504C35.97 7.09504 36.9808 7.42735 37.8112 7.99369L39.3176 6.52793C39.3924 6.45499 39.494 6.41404 39.6 6.41404C39.8208 6.41404 40 6.58878 40 6.80408V23.2632C40 28.0883 35.9884 32 31.04 32H14.4V25.7938C14.4 20.969 18.4116 17.0569 23.36 17.0569H29.76Z"
+                fill="#45413E"
+              />
+            </svg>
+            Furry <br />
+              paws
+          </div>
+          <ul class="navigation-menu">
+           
+  
+            
+            <li>
+              <a href="/aboutus/">About Us</a>
+            </li>
+  
+            <li>
+              <a href="/contact/">Contact Us</a>
+            </li>
+            
+            <li style="padding-left: 650px;">
+              <a href="/login/">LOGIN</a>
+            </li> 
+  
+            <li style="padding-left: 20px;">
+              <a href="/signup/">SIGN-UP</a>
+            </li> 
+  
+          </ul>
+        
+        </nav>
+      </header>
+
+   
+    <div> <p class="flex pt-5 pl-40 text-3xl " > <b>About Furry Paws</b> </p> </div>
+
+    <div class=" pl-20">
+      <div><img class="img-deg pt-10 pl-10 pr-1 " src="https://www.alouetteanimalhospital.ca/wp-content/uploads/sites/308/2022/06/pettips.jpg"></div>
+
+      <div class="flex pt-4 pl-5 pr-10 -ml-500 mr-20 border-black rounded-md bg-[#f6edeb;] f-Inter" >
+        <p class="">
+            Connecting Hearts, Creating Homes: Furry Paws is dedicated to ensuring every pet finds a loving and permanent home. Through compassionate adoption practices, education, and community collaboration, we strive to build a world where no pet is left behind. Join us in making a difference and fostering a future filled with companionship and care.
+                
+                        <br>At Furry Paws, we are driven by a singular mission to create a world where every pet has a loving and permanent home. We believe that every animal deserves a chance to live a life filled with love, care, and companionship.
+                        <br>Our commitment extends beyond merely finding homes for pets; we strive to match each animal with the perfect family, creating lasting connections that enrich both the lives of the pets and their adopters. We are dedicated to providing a safe and nurturing environment for our furry friends while they await their forever homes.
+                        <br>Through a compassionate and responsible adoption process, we aim to raise awareness about the joys and responsibilities of pet ownership. Our team works tirelessly to educate the community on the importance of spaying and neutering, proper veterinary care, and the lifelong commitment required to ensure the well-being of our animal companions.
+                        <br>We also collaborate with local shelters, rescue organizations, and community partners to amplify our impact. Together, we advocate for the welfare of all animals and strive to reduce the number of pets in need.
+                        <br>Join us on our mission to create a world where no pet is left behind. Whether you're looking to adopt, volunteer, or support our cause, together, we can make a difference in the lives of countless animals and build a community of compassion.
+                        <br> you for being a part of our journey towards a future where every pet finds a loving home.
+                        
+        </p>
+    </div>
+    </div>
+    
+    
+
+  </body>
