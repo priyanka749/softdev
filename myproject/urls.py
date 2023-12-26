@@ -6,6 +6,7 @@ from django.urls import include, path
 
 from django.urls import path
 from django.views import View
+from django.conf.urls.static import static
 
 from myapp import views
 
@@ -18,5 +19,7 @@ urlpatterns = [
      path('faq/',views.faq,name='faq'),
      path('aboutus/',views.aboutus,name='aboutus'),
      path('',views.dash,name='dash'),
+     
+    path('contact/', views.contact_view, name='contact'),
 
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

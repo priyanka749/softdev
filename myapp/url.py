@@ -16,5 +16,9 @@ urlpatterns = [
      path('faq/',views.faq,name='faq'),
      path('aboutus/',views.aboutus,name='aboutus'),
     path('admin/', admin.site.urls),
-    path('',include('myapp.urls'))
+    path('',include('myapp.urls')),
+  
+    path('contact/', views.contact_view, name='contact'),
+   
+
 ]

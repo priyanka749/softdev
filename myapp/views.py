@@ -1,9 +1,13 @@
 from imaplib import _Authenticator
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib import messages
+
+from .models import ContactMessage
+
+
 
 
 def login(request):
@@ -85,3 +89,22 @@ def faq(request):
 
 def aboutus(request):
     return render(request,'aboutus.html')
+
+def contact_view(request):
+    if request.method == 'POST':
+        name = request.POST['name_input']
+        email = request.POST['email_input']
+        telephone = request.POST['telephone_input']
+        subject = request.POST['subject_input']
+        message=request.POST['message_input']
+        print(name,email,telephone,subject,message)
+       
+        
+        form = ContactMessage(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/success/')  # Redirect to a success page after form submission
+    else:
+        form = ContactMessage()
+    
+    return render(request, 'contact_form.html', {'form': form})

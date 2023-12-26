@@ -1,11 +1,14 @@
+{% load static %}
 <!doctype html>
 <html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <a href="/dash.html">Home</a>
+  <a href="/dash.html"></a>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="Static/css/faq.css">
+  <!-- <link rel="stylesheet" href="Static/css/faq.css"> -->
+  <!-- <link rel="stylesheet" href="{% static 'css/faq.css' %}"> -->
+
  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&family=Tinos:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap" rel="stylesheet">
@@ -16,9 +19,14 @@
     <nav class="bg-white text-custom-color w-full px-52 py-4 -mb-1 -mr-12 flex justify-between items-center shadow-lg">
         <div class="flex items-center">
             
-            <div class="-mt-2 -ml-32 -pl-10 -mb-3"> <img src="Static/assets/image/final_logo.png" class="h-14"></div>
-            <div class="space-x-10 ml-10">
-                <a href="/dash/" id="homeButton">Home</a>
+            <div class="-mt-2 -ml-32 -pl-10 -mb-3">
+    <img src="{% static 'image/aston.jpeg' %}" alt="Aston" class="h-14">
+</div>
+<div class="space-x-10 ml-10">
+    <!-- Other content -->
+</div>
+
+                <a href="/dash/" id="homeButton"></a>
                 <a href="#">About</a>
             </div>
         </div>
@@ -62,7 +70,7 @@
     </div>
 
     <div class="pr-10"> 
-        <img src="Static/assets/image/carr.jpg" class=" ml-14 rounded-lg  w-64 h-80 shadow-2xl ">
+        <img src="static/assets/image/carr.jpg" class=" ml-14 rounded-lg  w-64 h-80 shadow-2xl ">
         <button class="DOG mt-10 ml-14  justify-center items-center  bg-white w-64 h-84  mt-30p hover:bg-[#6D6875] hover:text-white rounded-lg custom-border shadow-2xl" id="view_all"> 
             <div class="flex flex-col">
                 <img src="Static/assets/image/aston.jpeg" class=" h-64">
@@ -101,7 +109,22 @@
    
 
     </div>
+<!-- <style>
+    .pl-20p{
+    padding-left: 2%;
+    
+}
 
+.custom-border {
+    border: 1px solid #6D6875; /* Replace "yourHexColor" with your actual hex color */
+    filter: brightness(100%); /* Adjust the percentage to make it darker */
+}
+
+.p-20p{
+    padding: 2%;
+}
+
+</style> -->
     
     <script> 
     document.getElementById('homeButton').addEventListener('click', function() {
