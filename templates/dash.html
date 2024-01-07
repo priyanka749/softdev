@@ -1,0 +1,370 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="path/to/node_modules/tailwindcss/dist/tailwind.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />sh
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
+   <link rel="stylesheet" href="myproject\templates\Static\css\dash.css">
+   <link rel="stylesheet" type="text/css" href="{% static 'css/dash.css' %}">
+    <title>Pet Adoption</title>
+
+  </head>
+  <body>
+    <header>
+      <div class="banner">Let us begin with your pet adoption journey</div>
+      <nav>
+        <div id="logo">
+          <svg
+            width="40"
+            height="32"
+            viewBox="0 0 40 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12.8 32H0V21.9849C0 17.1239 4.0116 13.1839 8.96 13.1839H15.2V0.468341C15.2 0.251458 15.3792 0.0754376 15.6 0.0754376C15.7184 0.0754376 15.8308 0.127301 15.9068 0.216883L17.3616 1.92719C18.402 1.07577 19.74 0.563816 21.2 0.563816H22C23.442 0.563816 24.7656 1.06359 25.8 1.89654L27.2932 0.14066C27.3692 0.0514706 27.4812 0 27.6 0C27.8208 0 28 0.175628 28 0.392904V15.3896H23.36C17.528 15.3896 12.8 20.0337 12.8 25.7623V32Z"
+              fill="#45413E"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M29.76 17.0569V12.0875C29.76 12.0836 29.76 12.0797 29.76 12.0758V6.79004C29.76 6.57435 29.9392 6.4 30.16 6.4C30.266 6.4 30.3676 6.44095 30.4424 6.51389L31.9576 7.98784C32.7864 7.42501 33.7936 7.09504 34.88 7.09504C35.97 7.09504 36.9808 7.42735 37.8112 7.99369L39.3176 6.52793C39.3924 6.45499 39.494 6.41404 39.6 6.41404C39.8208 6.41404 40 6.58878 40 6.80408V23.2632C40 28.0883 35.9884 32 31.04 32H14.4V25.7938C14.4 20.969 18.4116 17.0569 23.36 17.0569H29.76Z"
+              fill="#45413E"
+            />
+          </svg>
+          Furry <br />paws
+        </div>
+        <ul class="navigation-menu">
+          <li>
+            
+            <ul class="subnav">
+              <li class="card-med" id="sup-dog">
+                <div class="card-image">
+                  <img
+                    src="Static/assets/image/cover.jpg"
+                  />
+                </div>
+                <a href="#">
+                  <span>Dogs</span>
+                  <span
+                    >Adopt All
+                    <span class="material-symbols-outlined">
+                      arrow_forward
+                    </span></span
+                  >
+                </a>
+              </li>
+              <li class="card-med" id="sup-cat">
+                <div class="card-image">
+                  <img src="./images/cat-1192026_640.jpg" />
+                </div>
+                <a href="#">
+                  <span>Cats</span>
+                  <span
+                    >SHOW
+                    <span class="material-symbols-outlined">
+                      arrow_forward
+                    </span></span
+                  >
+                </a>
+              </li>
+              <li class="card-med" id="sup-bird">
+                <div class="card-image">
+                  <img
+                    src="./images/360_F_177476718_VWfYMWCzK32bfPI308wZljGHvAUYSJcn.jpg"
+                  />
+                </div>
+                <a href="#">
+                  <span>Birds</span>
+                  <span
+                    >Adopt All omggg
+                    <span class="material-symbols-outlined">
+                      arrow_forward
+                    </span></span
+                  >
+                </a>
+              </li>
+              <li class="card-med" id="sup-fish">
+                <div class="card-image rounded">
+                  <img src="./images/photo-1513568821485-d64ace9a3509.png" />
+                </div>
+                <a href="#">
+                  <span>Fish</span>
+                  <span
+                    >Adopt All
+                    <span class="material-symbols-outlined">
+                      arrow_forward
+                    </span></span
+                  >
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            
+            <ul class="subnav">
+              <li class="card-med" id="serv-groom">
+                <div class="card-image">
+                  <img
+                    src="./images/1eae81f7-d5f6-4367-af39-ef51f0c96981.png"
+                  />
+                </div>
+                <a href="#">
+                  
+                  <span
+                    >More Info
+                    <span class="material-symbols-outlined">
+                      arrow_forward
+                    </span></span
+                  >
+                </a>
+              </li>
+              <li class="card-med" id="serv-board">
+                <div class="card-image">
+                  <img src="./images/nighty.png" />
+                </div>
+               
+              </li>
+            </ul>
+          </li>
+          
+          <li>
+            <a href="/aboutus/">About Us</a>
+          </li>
+
+          <li>
+            <a href="/contact/">Contact Us</a>
+          </li>
+          
+          <li style="padding-left: 650px;">
+            <a href="/login/">LOGIN</a>
+          </li> 
+
+          <li style="padding-left: 20px;">
+            <a href="/signup/">SIGN-UP</a>
+          </li> 
+
+        </ul>
+        <div id="utility">
+          <span class="material-symbols-outlined"> search </span>
+          
+        </div>
+      </nav>
+    </header>
+    <section class="hero">
+      <h1>Your One-Stop To Find your Companion!</h1>
+      
+    </section>
+    <section>
+      <h2>BROWSE PETS</h2>
+
+      <ul class="shop-pets">
+        <li class="card-large card-light" id="sup-dog">
+          <div class="card-image">
+            <img src="https://imgs.search.brave.com/hsqhm4TVvtbv_t5Xj5yvD5GTrWLmfoSdNcjyitmgeSE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9kb2ct/MTU2OTc2MDEuanBn" />
+          </div>
+          <ul>
+            ----DOGS----
+
+            <a href="{% url 'showpets' %}">
+              <button class="btn-outline-light">
+                Adopt All<span class="material-symbols-outlined">
+                  arrow_forward
+                </span>
+              </button>
+            </a>
+            
+          </ul>
+        </li>
+
+        <li class="card-large card-dark" id="sup-cat">
+          <div class="card-image">
+            <img src="https://i.pinimg.com/564x/52/db/e2/52dbe2f265defe6e76f2247ba94c4b17.jpg" />
+          </div>
+          <ul>
+            -----Cats-----
+            <!-- <li><a href="#">Food & Treats</a></li>
+            <li><a href="#">Toys</a></li>
+            <li><a href="#">Beds & Furniture</a></li> -->
+            <button class="btn-outline-dark">
+              Adop  All<span class="material-symbols-outlined">
+                arrow_forward
+              </span>
+            </button>
+          </ul>
+        </li>
+
+        <li class="card-large card-dark" id="sup-bird">
+          <div class="card-image">
+            <img src="https://imgs.search.brave.com/8Sndr-Iq2jsa4YDHAaZ7WOk9KSaLxJjcQWjs9Dr_ytY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNjE0/NzE1ODQyL3Bob3Rv/L3R3by1zaW1pbGFy/LWJpcmRzLXRpdG1v/dXNlLXNpdHRpbmct/b24tYS1icmFuY2gu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PU1XbEwxVEh1Qy1r/QW9CNlRDOVZnYktf/SXg1Vm1yd2ZiQlhw/NlNQRm93TDQ9" />
+          </div>
+          <ul>
+            -----BIRDS-----
+            
+            <button class="btn-outline-dark">
+                Adopt All<span class="material-symbols-outlined">
+                arrow_forward
+              </span>
+            </button>
+          </ul>
+        </li>
+        <li class="card-large card-light" id="sup-fish">
+          <div class="card-image">
+            <img src="https://imgs.search.brave.com/lb2Tf4t7vQRBXx8yVAKyGKLo_xFX0MPtdA7i09cFtkk/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNDcz/MDEyNjYwL3Bob3Rv/L2dyZXktc3F1aXJy/ZWwteWF3bmluZy5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/NXp5b1FPTHJDQnRR/cEpIN1UtZElVN3k1/QkpOOURBaUdFRDN0/ODc5dTJSUT0" />
+          </div>
+          <ul>
+            ----OTHERS----
+            
+            <button class="btn-outline-light">
+              Adopt All<span class="material-symbols-outlined">
+                arrow_forward
+              </span>
+            </button>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Our Services</h2>
+
+      <ul class="services">
+        
+        <li class="card-large card-dark card-wide" id="serv-groom">
+        
+          <div class="card-image">
+            <img src="https://glenoakanimalhospital.com/wp-content/uploads/2018/06/car-at-shelter-with-man-GO-shutterstock_1773024227.jpg" style="border-radius: 20px" />
+          </div>
+          <ul>
+            Frequently Asked Questions <span class="subtitle"
+              ></span
+            >
+            <li><a href="/faq/">Make the adoption transition as smooth as possible</a></li>
+            
+            <button class="btn-filled-dark">
+              <span class="material-symbols-outlined"> calendar_month </span
+              >READ
+            </button>
+          </ul>
+        </li>
+        <li class="card-large card-dark card-wide" id="serv-board">
+          <div class="card-image">
+            <img src="https://i0.wp.com/hope4astreetdog.org/wp-content/uploads/2019/10/animal-cat-cute-46024.jpg?resize=780%2C437&ssl=1" />
+          </div>
+          <ul>
+            CHECKLIST FOR NEW ADOPTERS<span class="subtitle"
+              ></span
+            >
+            
+            <li style="margin: 2px;"><a href="#">GET ANSWERS TO ALL THE QUESTIONS YOU AVENOT THOUGHT OF FOR YOUR ADOPTION.</a></li>
+
+            <button class="btn-filled-dark">
+              <span class="material-symbols-outlined"> calendar_month </span
+              >READ
+            </button>
+          </ul>
+        </li>
+      </ul>
+    </section>
+<!-- 
+    <section id="locate">
+      <div>
+        <h2>Location & Hours</h2>
+        <p>
+          Our knowledgeable and friendly staff is always ready to assist you in
+          making the best choices for your furry, feathered, or finned friends.
+          <br />
+          You need it, We've got it.
+        </p>
+        <div class="btn-group">
+          <button class="btn-filled-dark">
+            <span class="material-symbols-outlined"> pin_drop </span>Find a
+            Store
+          </button>
+          <button class="btn-outline-dark btn-hover-color">
+            <span class="material-symbols-outlined"> contact_support </span>
+            Contact Us
+          </button>
+        </div>
+      </div>
+    </section> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+    <script src="Static\javascript\dash.js"></script>
+
+    <style> 
+
+
+      .footer {
+    font-size: 16px;
+    padding: 10px 0px;
+    color: #db7f67;
+  }
+  
+  .footer .copyright {
+    text-align: left;
+    color: white; 
+    padding-left: 20px;;
+  }
+  
+  .social-icons {
+    text-align: right;
+  }
+  
+  .social-icon {
+    color: #db7f67; 
+    font-size: 16px;
+    margin-right: 20px;
+    text-decoration: none;
+    transition: color 0.3s; 
+  }
+  
+  .social-icon:hover {
+    color: #007bff; 
+  }
+
+  #footer:hover {
+    background-color: #db7f67; /* Your desired hex color */
+  }
+  </style>
+  
+      <footer id="footer" class="footer  hover:bg-[#db7f67]">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="copyright ">
+                &copy; FURRY PAWS - <strong><span>Home to many Animals and a place for ADOPTION</span></strong>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <!-- <div class="social-icons">
+                <a href="https://www.facebook.com/softitclub" class="social-icon" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.linkedin.com/company/it-and-editorial-club-of-softwarica/" class="social-icon" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.instagram.com/itec_softwarica/" class="social-icon" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="mailto:itec@softwarica.edu.np" class="social-icon" target="_blank"><i class="bi bi-envelope"></i></a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </footer>
+
+  </body>
+</html>
