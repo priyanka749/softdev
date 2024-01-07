@@ -1,11 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
-    <a href="{% url 'signup' %}">Sign Up</a>
-    <a href="/dash">Home</a>
+    <a href="{% url 'signup' %}"></a>
+    <a href="/dash"></a>
     <link rel="stylesheet" href="suyog_css/login.css">
     <script src="static/javascript/login.js"></script>
     <link rel="stylesheet" href="style_css/nav.css">
@@ -43,7 +44,7 @@
         <div class="row border rounded-3 p-3 bg-white shadow box-area">
             <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box">
                 <div class="featured-image mb-3">
-                    <img src="https://www.thesprucepets.com/thmb/4SZ77xgkJ7LzuICCbaxBSTWc2-0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/black-and-white-dog-names-4802651-hero-07314f6dfebf4af7b1a55b61d7183dd8.jpg" class=" object-cover w-100 rounded-4"  alt="">
+                    <img src="{%static 'image/photo.jpg'%}" class=" object-cover w-100 rounded-4"  alt="">
                 </div>
                 <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 800;"></p>
                 <small class="text-white text-wrap text-center" style="width: 17rem; font-family: 'Courier New', Courier, monospace;"></small>

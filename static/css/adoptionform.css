@@ -1,0 +1,82 @@
+/* Basic styles for the form elements */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color:#849184;
+  background-size: cover;
+  background-position: center;
+  
+}
+
+.container {
+  width: 60%;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(154, 143, 143, 10);
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="checkbox"],
+textarea,
+select,
+button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #a28c7e;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width:100px; 
+  margin-left:170px ;
+}
+
+button:hover {
+  background-color: #0f100f;
+}
+
+.preferences {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.preferences input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: center;
+  margin-top: 0px;
+}
+
+.terms-checkbox input[type="checkbox"] {
+  margin-left:90px 
+
+}
