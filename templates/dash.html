@@ -201,14 +201,14 @@
           </div>
           <ul>
             -----Cats-----
-            <!-- <li><a href="#">Food & Treats</a></li>
-            <li><a href="#">Toys</a></li>
-            <li><a href="#">Beds & Furniture</a></li> -->
-            <button class="btn-outline-dark">
-              Adop  All<span class="material-symbols-outlined">
-                arrow_forward
-              </span>
-            </button>
+          
+            <a href="{% url 'showcats' %}">
+              <button class="btn-outline-light">
+                Adopt All<span class="material-symbols-outlined">
+                  arrow_forward
+                </span>
+              </button>
+            </a>
           </ul>
         </li>
 
@@ -219,11 +219,13 @@
           <ul>
             -----BIRDS-----
             
-            <button class="btn-outline-dark">
+            <a href="{% url 'showbirds' %}">
+              <button class="btn-outline-light">
                 Adopt All<span class="material-symbols-outlined">
-                arrow_forward
-              </span>
-            </button>
+                  arrow_forward
+                </span>
+              </button>
+            </a>
           </ul>
         </li>
         <li class="card-large card-light" id="sup-fish">

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,24 +61,27 @@
       </header>
 
 <div class="center container relative">
-  {% comment %} <div class="centered-div w-full bg-white flex items-center justify-center border-5-[#E4989C]">
-      <h1>Image</h>
-  </div>
-  <div class="w-80 bg-[#f4cfc6] centered-div flex items-left relative">
-      <h2>About the dog
-        bddhu<br>
-          bahjkka<br>
-          nkbscbanjc ka<br>
-          nkbscbanjc ka<br>
-          bhakbcakbca<br>
-          kacma cj<br>
-          njathsj<br>
-          ksadskfia<br>
-          niaunj<br>
-        
-      </h2>
-  </div> {% endcomment %}
+  
+  {% if pet.image %}
+        <td> 
+          <img src="/media/{{ pet.image }}" alt="Cat Image" class="w-40 h-auto mb-4 rounded-lg">
+        </td>
+      {% else %}
+        <td> 
+          <img src="{% static 'image/aston.jpeg' %}" alt="Default Cat Image" class="w-40 h-auto mb-4 rounded-lg">
+        </td>
+      {% endif %}
+      
+      <p class="text-xl mb-2"> NAME: {{ pet.name }}</p>
+      <p class="text-lg"> Age: {{ pet.age }} </p>
+      <p class="text-lg"> Color: {{ pet.color }} </p>
+      <!-- Add other fields as needed -->
 
+    
+
+
+ 
+  
   <h1>{{animal.name}}</h1>
   <p>{{animal.description}}</p>
   <p>Species: {{animal.species}}</p>

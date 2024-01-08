@@ -151,3 +151,55 @@ class Cats(models.Model):
     def __str__(self):
         return self.name
 
+
+from django.db import models
+
+class Birds(models.Model):
+    COLOR_CHOICES = [
+        ('black', 'Black'),
+        ('brown', 'Brown'),
+        ('white', 'White'),
+        ('grey', 'Grey'),
+        ('Tabby', 'Tabby'),
+    ]
+
+    AGE_CHOICES = [
+        (1, 'One'),
+        (2, 'Two'),
+        (3, 'Three'),
+        (4, 'Four'),
+        (5, 'Five'),
+        (6, 'Six'),
+        (7, 'Seven'),
+    ]
+
+    SPECIES_CHOICES = [
+        ('sparrow', 'Sparrow'),
+        ('parrot', 'Parrot'),
+        ('Cockatiel', 'Cockatiel'),
+        ('Lovebird', 'Lovebird'),
+    ]
+
+    SIZE_CHOICES = [
+        ('10-20 small lbs', 'Small'),
+        ('30-40 lbs medium', 'Medium'),
+        ('50-60 lbs large', 'Large'),
+    ]
+
+    FRIENDLINESS_CHOICES = [
+        ('Outgoing', 'Outgoing'),
+        ('very social', 'Very Social'),
+        ('Reserved', 'Reserved'),
+    ]
+
+    bird_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255, default='Kitty')
+    color = models.CharField(max_length=255, default='Tabby', choices=COLOR_CHOICES)
+    age = models.IntegerField(default=1, choices=AGE_CHOICES)
+    species = models.CharField(max_length=255, default='parrot', choices=SPECIES_CHOICES)
+    size = models.CharField(max_length=255, default='10-20 small lbs', choices=SIZE_CHOICES)
+    friendliness = models.CharField(max_length=255, default='Outgoing', choices=FRIENDLINESS_CHOICES)
+    image = models.ImageField(upload_to='pet_images/', max_length=250, null=True, default='default_image.jpg')
+
+    def __str__(self):
+        return self.name

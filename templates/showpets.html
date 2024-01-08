@@ -114,7 +114,6 @@
                     </select>
                   </div>
 
-
                   <div class="mb-4 mr-8 ml-8">
                     <label for="behaviours" class="block font-bold">Behaviours</label>
                     <select id="behaviours" name="behaviours" class="mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
@@ -127,7 +126,6 @@
                       <option value="Circling">Circling</option>
                     </select>
                   </div>
-
 
                   <div class="mb-4 mr-8 ml-8 ">
                     <label for="behaviours" class="block font-bold ">Age</label>
@@ -142,7 +140,6 @@
                     </select>
                   </div>
 
-
                   <div class="mb-4 mr-8 ml-8 ">
                     <label for="behaviours" class="block font-bold ">Weight</label>
                     <select id="size" name="size" class="mt-2 mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
@@ -151,8 +148,7 @@
                       <option value="50-60 lbs large">2 King Pillows</option>
                       <option value="70-80 lbs xl">3 King Pillows</option>
                     </select>
-                  </div>
-                
+                  </div>                
           </div>         
         </div>
     
@@ -177,15 +173,11 @@
 
                   <p class="text-xl mb-2"> NAME: {{n.name}}</p>
                   <p class="text-lg"> Age: {{n.age}} </p>
-                  <a href="{% url 'profile' pet_id=n.pet_id %}">open</a>
-
+                  <a href="{% url 'profile' animal_type='dog' pet_id=n.pet_id %}">Dog Profile</a>
               </div>
           </div>         
             {% endfor %}
-        
-     
-
-            
+                   
         </div>
 
         <div class="flex flex-row justify-evenly bg-[#ffffff] max-w-full max-h-full mt-11 mr-4 ">

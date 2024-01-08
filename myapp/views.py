@@ -115,11 +115,7 @@ from django.http import HttpResponse
 def showpets(request):
 
     animalData=Animal_dog.objects.all()
-    
-    # for a in animalData:
-    #     print( a.name)
 
-    # print("hello")
 
     data={
         'animalData':animalData
@@ -132,18 +128,42 @@ def showpets(request):
 from django.shortcuts import get_object_or_404
 from .models import Animal_dog  # Import your Animal model or replace this with your actual Animal model import
 
-def profile(request, pet_id):
-    # Retrieve the specific pet based on the primary key
-    pet = get_object_or_404(Animal_dog, pet_id=pet_id)
+# def profile(request, pet_id):
+    
+#     pet = get_object_or_404(Animal_dog, pet_id=pet_id)
+
+#     # Prepare data to be passed to the template
+#     data = {
+#         'pet': pet,
+#     }
+
+#     # Render the profile template with the pet details
+#     print(data)
+#     return render(request, 'profile.html', data)
+
+from django.shortcuts import render, get_object_or_404
+from .models import Animal_dog, Cats
+
+def profile(request, pet_id, animal_type):
+    # Use a generic model name parameter to handle both dogs and cats
+    model_class = Animal_dog if animal_type == 'dog' else Cats
+
+    # Choose the appropriate identifier field based on the animal_type
+    identifier_field = 'cat_id' if animal_type == 'cats' else 'pet_id'
+
+    # Retrieve the specific pet object based on the identifier field and pet_id
+    pet = get_object_or_404(model_class, **{identifier_field: pet_id})
 
     # Prepare data to be passed to the template
     data = {
         'pet': pet,
+        'animal_type': animal_type,  # Pass the animal type to the template
     }
 
     # Render the profile template with the pet details
     print(data)
     return render(request, 'profile.html', data)
+
 
 
 from .models import Cats 
@@ -159,5 +179,13 @@ def showcats(request):
 
     return render(request, 'showcats.html',data)  # Assuming your form is in showpets.html
 
+from .models import Birds 
+# ONLY FOR CATS
+def showbirds(request):
+    BirdsData=Birds.objects.all() 
+    data={
+        'BirdsData':BirdsData
+    }
+    return render(request, 'showbirds.html',data)  # Assuming your form is in showpets.html
 
 

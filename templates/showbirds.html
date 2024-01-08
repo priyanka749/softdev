@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/tailwindcss/utilities.css' %}">
 
 </head>
-<body>
+<bod
 
     <div class="banner">Let us begin with your pet adoption journey</div>
     <nav class="shadow-xl">
@@ -44,7 +44,6 @@
             fill="#45413E"
           />
         </svg>
-
         Furry <br />paws
       </div>
       <ul class="navigation-menu">          
@@ -69,10 +68,10 @@
     </nav>
   </header>
 
+
       <from action ="/showcats" method="post" id="showcats"
       
-     
-
+    
       <div class="bg-white m-4 flex flex-row"> 
        <!-- Use flex-row to arrange divs horizontally -->
        
@@ -113,6 +112,18 @@
                   </div>
 
                   <div class="mb-4 mr-8 ml-8">
+                    <label for="bird_species" class="block font-bold">Bird Species</label>
+                    <select id="bs" name="bird_species" class="mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
+                        
+                        <option value="sparrow">Sparrow</option>                    
+                        <option value="parrot">Parrot</option>
+                        <option value="Cockatiel">Cockatiel</option>
+                        <option value="Lovebird">Lovebrid</option>
+                    </select>
+                </div>
+                
+
+                  <div class="mb-4 mr-8 ml-8">
                     <label for="size" class="block font-bold">Weight</label>
                     <select id="size" name="size" class="mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
                         <option value="10-20 small lbs">Small</option>
@@ -129,8 +140,7 @@
                         <option value="Reserved">Reserved</option>
                     </select>
                 </div>
-                
-                
+                                
           </div>         
         </div>
     
@@ -155,40 +165,12 @@
 
                   <p class="text-xl mb-2"> NAME: {{n.name}}</p>
                   <p class="text-lg"> Age: {{n.age}} </p>
-                  <a href="{% url 'profile' animal_type='cats' pet_id=n.cat_id %}">Cat Profile</a>
               </div>
           </div>         
             {% endfor %}                       
            
         </div>
 
-        <div class="flex flex-row justify-evenly bg-[#ffffff] max-w-full max-h-full mt-11 mr-4 ">
-           
-            <div class="flex flex-col bg-[#f6edeb] w-48 h-64 mt-0 mr-4 rounded-lg">
-           
-            </div>
-
-            <div class="flex flex-col bg-[#f6edeb] w-48 h-64 mt-0 mr-4 rounded-lg">
-           
-            </div>
-
-            <div class="flex flex-col bg-[#f6edeb] w-48 h-64 mt-0 mr-4 rounded-lg">
-           
-            </div>
-
-            <div class="flex flex-col bg-[#f6edeb] w-48 h-64 mt-0 mr-4 rounded-lg">
-           
-            </div>
-
-            <div class="flex flex-col bg-[#f6edeb] w-48 h-64 mt-0 mr-4 rounded-lg">
-           
-            </div>
-
-            <div class="flex flex-col bg-[#f6edeb] w-48 h-64 mt-0 mr-4 rounded-lg">
-           
-            </div>
-           
-        </div>
 
         </div>
         
