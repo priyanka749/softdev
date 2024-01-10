@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render, get_list_or_404
 from django.contrib import messages
-
+from .models import Donation_data
 from .models import ContactMessage
 
 def login(request):
@@ -79,6 +79,7 @@ def dash(request):
     
     return render(request, 'dash.html', {'login':login ,signup:signup}) 
    
+
 def faq(request):
         
         # Your view logic for handling FAQ requests
@@ -128,18 +129,6 @@ def showpets(request):
 from django.shortcuts import get_object_or_404
 from .models import Animal_dog  # Import your Animal model or replace this with your actual Animal model import
 
-# def profile(request, pet_id):
-    
-#     pet = get_object_or_404(Animal_dog, pet_id=pet_id)
-
-#     # Prepare data to be passed to the template
-#     data = {
-#         'pet': pet,
-#     }
-
-#     # Render the profile template with the pet details
-#     print(data)
-#     return render(request, 'profile.html', data)
 
 from django.shortcuts import render, get_object_or_404
 from .models import Animal_dog, Cats
@@ -189,3 +178,22 @@ def showbirds(request):
     return render(request, 'showbirds.html',data)  # Assuming your form is in showpets.html
 
 
+def donation_form(request):
+    
+    return render(request, 'donation_form.html') 
+   
+
+def save_donateInfo(request):
+
+    if request.method=="POST":
+        full_name=request.POST.get('full_name')
+        email=request.POST.get('email')
+        ph_number=request.POST.get('ph_number')
+        amount=request.POST.get('amount')
+        message=request.POST.get('message')
+        
+
+        record=Donation_data(full_name=full_name,email=email,phone_number=ph_number,message=message,amount=amount)
+        record.save()
+    return render(request, 'donation_form.html') 
+   

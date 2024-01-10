@@ -27,8 +27,10 @@ urlpatterns =[
     # path ('profile/',views.profile, name='profile'),
     path('contact/', views.contact_view, name='contact'),
     path('showcats/',views.showcats, name='showcats'),
-    path('showbirds/',views.showbirds, name='showbirds')
-    
+    path('showbirds/',views.showbirds, name='showbirds'),
+    path('donation_form/',views.save_donateInfo, name='save_donateInfo'),
+   
+    # path('saveInfo/',views.save_donateInfo, name='save_donateInfo')
 ]
 
 
