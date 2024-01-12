@@ -131,14 +131,24 @@ from .models import Animal_dog  # Import your Animal model or replace this with 
 
 
 from django.shortcuts import render, get_object_or_404
-from .models import Animal_dog, Cats
+from .models import Animal_dog, Cats, other_animals, Birds
 
 def profile(request, pet_id, animal_type):
-    # Use a generic model name parameter to handle both dogs and cats
-    model_class = Animal_dog if animal_type == 'dog' else Cats
-
-    # Choose the appropriate identifier field based on the animal_type
-    identifier_field = 'cat_id' if animal_type == 'cats' else 'pet_id'
+    # Use if-else to determine the appropriate model class and identifier field
+    if animal_type == 'dog':
+        model_class = Animal_dog
+        identifier_field = 'pet_id'
+    elif animal_type == 'cat':
+        model_class = Cats
+        identifier_field = 'cat_id'
+    elif animal_type == 'other_animal':
+        model_class = other_animals
+        identifier_field = 'animal_id'
+    elif animal_type == 'bird':
+        model_class = Birds
+        identifier_field = 'bird_id'
+    # else:
+    #     raise Http404("Invalid animal type")
 
     # Retrieve the specific pet object based on the identifier field and pet_id
     pet = get_object_or_404(model_class, **{identifier_field: pet_id})
@@ -146,11 +156,9 @@ def profile(request, pet_id, animal_type):
     # Prepare data to be passed to the template
     data = {
         'pet': pet,
-        'animal_type': animal_type,  # Pass the animal type to the template
+        'animal_type': animal_type,
     }
 
-    # Render the profile template with the pet details
-    print(data)
     return render(request, 'profile.html', data)
 
 
@@ -169,13 +177,27 @@ def showcats(request):
     return render(request, 'showcats.html',data)  # Assuming your form is in showpets.html
 
 from .models import Birds 
-# ONLY FOR CATS
+# ONLY FOR brids
 def showbirds(request):
     BirdsData=Birds.objects.all() 
     data={
         'BirdsData':BirdsData
     }
-    return render(request, 'showbirds.html',data)  # Assuming your form is in showpets.html
+    return render(request, 'showbirds.html',data)  
+
+
+# views function for other animals 
+from .models import other_animals 
+def show_more(request):
+    more_animalInfo=other_animals.objects.all() 
+    data={
+        'more_animalInfo':more_animalInfo
+    }
+    return render(request, 'show_more.html',data)  
+
+
+
+
 
 
 def donation_form(request):

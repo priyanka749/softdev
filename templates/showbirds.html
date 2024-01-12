@@ -167,15 +167,14 @@
 
           <p class="text-xl mb-2"> NAME: {{n.name}}</p>
           <p class="text-lg"> Age: {{n.age}} </p>
-          <a href="{% url 'profile' animal_type='dog' pet_id=n.pet_id %}">Dog Profile</a>
+          <a href="{% url 'profile' animal_type='bird' pet_id=n.bird_id %}">Dog Profile</a>
         </div>
       </div>
       {% endfor %}
 
       <!-- </div> -->
 
-   
-
+  
     </div>
 
   </div>

@@ -28,9 +28,10 @@ urlpatterns =[
     path('contact/', views.contact_view, name='contact'),
     path('showcats/',views.showcats, name='showcats'),
     path('showbirds/',views.showbirds, name='showbirds'),
+    path('show_more/',views.show_more, name='show_more'),
     path('donation_form/',views.save_donateInfo, name='save_donateInfo'),
    
-    # path('saveInfo/',views.save_donateInfo, name='save_donateInfo')
+    
 ]
 
 
