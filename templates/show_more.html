@@ -69,14 +69,15 @@
   </header>
 
     <div class="mt-8 mx-64">
-      <div class="relative  flex w-full flex-wrap items-stretch">
+      
+      <form action="{% url 'show_more' %}" method="get" class="relative  flex w-full flex-wrap items-stretch" > 
         <input
-          type="search"
+          type="text"
+          name="q"
           class="relative mr-2  block min-w-0 flex-auto rounded-lg border border-solid border-[#f6edeb] bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-[#f6edeb] focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-[#f6edeb] dark:focus:border-[#f6edeb]"
           placeholder="Search"
           aria-label="Search"
           aria-describedby="button-addon3" />
-
         <!--Search button-->
         <button
           class="relative z-[2] rounded-lg border-2 border-[#db7f67] px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-[#db7f67] hover:bg-opacity-5 focus:outline-none focus:ring-0"
@@ -85,42 +86,53 @@
           data-te-ripple-init>
           Search
         </button>
-      </div>
+      </form>
+      
     </div>
 
-  <from action="/showpets" method="post" id="showpets"></from>
 
-
-    <div class="flex flex-wrap justify-evenly my-11 ml-5 mt-5">
-      {%for n in more_animalInfo %}
-
-      <div class="flex flex-col bg-[#f6edeb] w-52 mr-8 h-80  -ml-4 rounded-lg border border-[#db7f67] mt-6">
-        <div class="flex flex-col items-center justify-center my-4 font-bold">
-
-          {% if n.image %}
-          <td>
-            <img src="{{ request.scheme }}://{{ request.get_host }}{{ n.image.url }}" alt="Image "
-              class="w-40 h-auto mb-4 rounded-lg">
-
-          </td>
-          {% else %}
-          <td>
-            <img src="{% static 'image/aston.jpeg' %}" alt="Image Description" class="w-40 h-auto mb-4 rounded-lg">
-          </td>
-          {% endif%}
-
-          <p class="text-xl mb-2"> NAME: {{n.animal}}</p>
-          <p class="text-lg"> Age: {{n.age}} </p>
-          <a href="{% url 'profile' animal_type='other_animal' pet_id=n.animal_id %}">  </a>
-        </div>
-      </div>
-      {% endfor %}
+      <div class="flex flex-wrap justify-evenly my-11 ml-5 mt-5">
+        {% if posts %}
+            {% for n in posts %}
+                <div class="flex flex-col bg-[#f6edeb] w-52 mr-8 h-80 -ml-4 rounded-lg border border-[#db7f67] mt-6">
+                    <div class="flex flex-col items-center justify-center my-4 font-bold">
+                        {% if n.image %}
+                            <img src="{{ n.image.url }}" alt="Animal Image" class="w-40 h-auto mb-4 rounded-lg">
+                        {% else %}
+                            <img src="{% static 'image/aston.jpeg' %}" alt="Default Image" class="w-40 h-auto mb-4 rounded-lg">
+                        {% endif %}
+                        <p class="text-xl mb-2"> Name: {{ n.animal }}</p>
+                        <p class="text-lg"> Age: {{ n.age }} </p>
+                        <a href="{% url 'profile' animal_type='other_animal' pet_id=n.animal_id %}"> Profile </a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <!-- <p>No results found. Showing all animals:</p> -->
+            {% for n in more_animalInfo %}
+                <!-- Display all animals -->
+                <div class="flex flex-col bg-[#f6edeb] w-52 mr-8 h-80 -ml-4 rounded-lg border border-[#db7f67] mt-6">
+                    <div class="flex flex-col items-center justify-center my-4 font-bold">
+                        {% if n.image %}
+                            <img src="{{ n.image.url }}" alt="Animal Image" class="w-40 h-auto mb-4 rounded-lg">
+                        {% else %}
+                            <img src="{% static 'image/aston.jpeg' %}" alt="Default Image" class="w-40 h-auto mb-4 rounded-lg">
+                        {% endif %}
+                        <p class="text-xl mb-2"> Name: {{ n.animal }}</p>
+                        <p class="text-lg"> Age: {{ n.age }} </p>
+                        <a href="{% url 'profile' animal_type='other_animal' pet_id=n.animal_id %}"> Profile </a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    
 
       <!-- </div> -->
 
-   
-
     </div>
+
+    
 
   </div>
 
@@ -173,6 +185,8 @@
       </div>
     </div>
   </footer>
+
+
 
 </body>
 

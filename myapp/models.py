@@ -190,7 +190,7 @@ class other_animals(models.Model):
     image = models.ImageField(upload_to='pet_images/', max_length=250, null=True, default='default_image.jpg')
 
     def __str__(self):
-        return f"{self.animal} - {self.animal_id}"
+        return self.animal
 
 
 class Donation_data(models.Model):

@@ -1,11 +1,47 @@
 from imaplib import _Authenticator
+from typing import Any
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.db.models.query import QuerySet
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render, get_list_or_404
 from django.contrib import messages
 from .models import Donation_data
 from .models import ContactMessage
+from django.views.generic import ListView
+import json
+from .models import other_animals
+
+from django.shortcuts import render
+from .models import other_animals
+
+def SearchView(request):
+    template_name = 'show_more.html'
+    context_object_name = 'posts'
+
+    queryset = other_animals.objects.all()
+    query = request.GET.get('q')
+
+    if query:
+        queryset = queryset.filter(animal__icontains=query).order_by('animal')
+
+    context = {
+        context_object_name: queryset,
+    }
+
+    return render(request, 'show_more.html', context)
+
+def show_more(request):
+    queryset = other_animals.objects.all()
+    context_object_name = 'more_animalInfo'
+
+    context = {
+        context_object_name: queryset,
+    }
+
+    return render(request, 'show_more.html', context)
+
+
 
 def login(request):
     return render(request,'login.html')
@@ -184,19 +220,6 @@ def showbirds(request):
         'BirdsData':BirdsData
     }
     return render(request, 'showbirds.html',data)  
-
-
-# views function for other animals 
-from .models import other_animals 
-def show_more(request):
-    more_animalInfo=other_animals.objects.all() 
-    data={
-        'more_animalInfo':more_animalInfo
-    }
-    return render(request, 'show_more.html',data)  
-
-
-
 
 
 

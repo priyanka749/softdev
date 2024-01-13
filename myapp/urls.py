@@ -8,9 +8,12 @@ from django.urls import path
 from django.views import View
 from .views import profile
 from myapp import views
+from . import views
+
+# from .views import AnimaList
 
 urlpatterns =[
-    path('', views.signup,name='dash'),
+    path('', views.dash,name='dash'),
     path('signup/', views.signup, name='signup'),
     path('login/',views.login,name='login'),
     path('contact/', views.contact, name='contact'),
@@ -22,16 +25,15 @@ urlpatterns =[
 
     path('showpets/<str:animal_type>/<int:pet_id>/', views.profile, name='profile'),
 
-    # path('product/',view.product_detail_showpets,name='profile'),
-
-    # path ('profile/',views.profile, name='profile'),
     path('contact/', views.contact_view, name='contact'),
     path('showcats/',views.showcats, name='showcats'),
     path('showbirds/',views.showbirds, name='showbirds'),
-    path('show_more/',views.show_more, name='show_more'),
+
+    path('show_more/',views.SearchView, name='show_more'),
+
     path('donation_form/',views.save_donateInfo, name='save_donateInfo'),
-   
     
+   
 ]
 
 
