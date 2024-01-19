@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Adoption Feedback</title>
+  <!-- Include the Tailwind CSS CDN or link to your local file -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <div class="container mx-auto mt-8 p-8 bg-[#EAD8CE] shadow-md rounded-md max-w-md">
+
+    <h1 class="text-2xl font-semibold mb-6 text-gray-800">Pet Adoption Feedback</h1>
+
+    <form action="#" method="post">
+      {% csrf_token %}
+      <div class="mb-4">
+        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Your Name</label>
+        <input type="text" id="name" name="name" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" required>
+      </div>
+
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Your Email</label>
+        <input type="email" id="email" name="email" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" required>
+      </div>
+
+      <div class="mb-4">
+        <label for="feedback" class="block text-gray-700 text-sm font-bold mb-2">Feedback</label>
+        <textarea id="feedback" name="feedback" rows="4" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" required></textarea>
+      </div>
+
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600" onclick="alert('Thank you for your feedback!')">Submit Feedback</button>
+    </form>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <a href="/dash.html"></a>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- <link rel="stylesheet" href="Static/css/faq.css"> -->
+  <!-- <link rel="stylesheet" href="{% static 'css/faq.css' %}"> -->
+
+ 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&family=Tinos:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap" rel="stylesheet">
+</head>
+
+<!-- 6D6875  -->
+<body class="text-base">
+    <nav class="bg-white text-custom-color w-full px-52 py-4 -mb-1 -mr-12 flex justify-between items-center shadow-lg">
+        <div class="flex items-center">
+            
+            <div class="-mt-2 -ml-32 -pl-10 -mb-3">
+    <img src="{% static 'image/aston.jpeg' %}" alt="Aston" class="h-14">
+</div>
+<div class="space-x-10 ml-10">
+    <!-- Other content -->
+</div>
+
+                <a href="/dash/" id="homeButton"></a>
+                <a href="#">About</a>
+            </div>
+        </div>
+    
+        <div class="space-x-4 ml-auto border-black">
+            <button class="bg-white hover:bg-[#6D6875] hover:text-white py-1 px-4 rounded transition-all ease-in duration-150">Sign Up</button>
+            <button class="bg-white hover:bg-[#6D6875] hover:text-white py-1 px-4 rounded transition-all ease-in duration-150">Login</button>
+        </div>
+    </nav>
+
+  <div class="flex pl-20p ml-10 pt-10 pr-10 ">
+    <div class="bg-white rounded-lg shadow-lg custom-border">
+
+        <p class="font-serif text-4xl font-semibold font- pt-8 ml-8"> Frequently asked Questions </p>
+
+        <!-- head1 questi -->
+        <div class=" px-8 hover:bg-[#]">
+            <p class=" mt-7 text-2xl font-medium"> How Do I Search For a Pet? </p>
+            <p class=" text-xl pt-5 font-normal"> furrypaws.com is a searchable list of pets from our shelter. To find an adoptable pet, you can
+                 begin your search using “Find a Pet” located above. Since Petfinder is updated regularly, we recommend that
+                  you keep checking back or create a saved search email alert to be notified when new pets matching your search 
+                  criteria are added to the site.</p>
+        </div>
+
+        <div class="px-8">
+            <p class=" mt-7 ml-8 text-xl "> Is the Pet I See on Petfinder Still Adoptable? </p>
+            <p class=" ml-8 text-lg pt-5"> furrypaws.com is a searchable list of pets from our shelter. To find an adoptable pet, you can
+                 begin your search using “Find a Pet”  located above. Since Petfinder is updated regularly, we recommend that
+                  you keep checking back or create a saved search email alert to be notified when new pets matching your search 
+                  criteria are added to the site.</p>
+        </div>
+
+        <div class="px-8">
+            <p class=" mt-6 ml-8 text-xl "> Can I Save My Search or Be Notified When New Pets Are Available? </p>
+            <p class=" ml-8 text-lg pb-6 pt-5"> To be notified by email when pets matching your search criteria are first posted on the site,
+                 use our saved search feature. After performing a search, you will see a button with a bell icon to the right of your search results. 
+                 Click on this button to set an email alert for your search.</p>
+        </div>
+       
+
+    </div>
+
+    <div class="pr-10"> 
+        <img src="static/assets/image/carr.jpg" class=" ml-14 rounded-lg  w-64 h-80 shadow-2xl ">
+        <button class="DOG mt-10 ml-14  justify-center items-center  bg-white w-64 h-84  mt-30p hover:bg-[#6D6875] hover:text-white rounded-lg custom-border shadow-2xl" id="view_all"> 
+            <div class="flex flex-col">
+                <img src="Static/assets/image/aston.jpeg" class=" h-64">
+                <div class="m-2">VIEW ANIMALS AVAILABLE RIGHT NOW.</div>
+            </div>
+        </button>
+    </div>
+  </div>
+
+  
+  <div class="bg-[#6D6875] rounded-lg shadow-3xl m-12">
+    <!-- head1 questi -->
+    <div class=" pt-2 px-8">
+        <p class=" mt-6 text-2xl font-medium "> Is the Pet I See on Petfinder Still Adoptable? </p>
+        <p class=" text-xl"> furrypaws.com is a searchable list of pets from our shelter. To find an adoptable pet, you can
+             begin your search using “Find a Pet” located above. Since Petfinder is updated regularly, we recommend that
+              you keep checking back or create a saved search email alert to be notified when new pets matching your search 
+              criteria are added to the site.</p>
+    </div>
+
+    <div class="px-8">
+        <p class=" mt-6 ml-8 text-xl "> Is the Pet I See on Petfinder Still Adoptable? </p>
+        <p class=" ml-8 text-lg"> furrypaws.com is a searchable list of pets from our shelter. To find an adoptable pet, you can
+             begin your search using “Find a Pet” <br> located above. Since Petfinder is updated regularly, we recommend that
+              you keep checking back or create a saved <br>search email alert to be notified when new pets matching your search 
+              criteria are added to the site.</p>
+    </div>
+
+    <div class="px-8">
+        <p class=" mt-6 ml-8 text-xl "> How Do I Search For a Pet? </p>
+        <p class=" ml-8 text-lg pb-10"> furrypaws.com is a searchable list of pets from our shelter. To find an adoptable pet, you can
+             begin your search using “Find a Pet” <br> located above. Since Petfinder is updated regularly, we recommend that
+              you keep checking back or create a saved <br>search email alert to be notified when new pets matching your search 
+              criteria are added to the site.</p>
+    </div>
+   
+
+    </div>
+<!-- <style>
+    .pl-20p{
+    padding-left: 2%;   
+}
+
+.custom-border {
+    border: 1px solid #6D6875; /* Replace "yourHexColor" with your actual hex color */
+    filter: brightness(100%); /* Adjust the percentage to make it darker */
+}
+
+.p-20p{
+    padding: 2%;
+}
+
+</style> -->
+    
+    <script> 
+    document.getElementById('homeButton').addEventListener('click', function() {
+        // Change the URL to the home page URL
+        window.location.href = 'nav.html';
+    });
+    </script>    
+
+<script> 
+    document.getElementById('view_all').addEventListener('click', function() {
+        // Change the URL to the home page URL
+        window.location.href = 'nav.html';
+    });
+    </script>  
+
+  </body>
+</html>
