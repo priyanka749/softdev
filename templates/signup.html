@@ -1,11 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <a href="/dash">Home</a>
-    <link rel="stylesheet" href="Static/css/login.css" />
+    <a href="/dash"></a>
+    <link rel="stylesheet" href="{%static 'css/'%}" />
     <link rel="stylesheet.css" th:href ="@{Signup.css}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,28 +34,31 @@
         <!-- Left Box -->
         <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box">
             <div class="featured-image mb-3">
-                <img src="https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_640.jpg" class="rounded-4 " style="width: 395px;" alt="">
+                <img src="{%static 'image/cover.jpg'%}" class="rounded-4 " style="width: 395px;" alt="">
             </div>
             <p class ="text-white fs-2" style="font-family:'Courier New',Courier, monospace ; font-weight: 800;"></p>
             <small class="text-white text-wrap text-center" style="width: 17rem; font-family: 'Courier New', Courier, monospace;"></small>
         </div>
 
         <!-- Right Box  -->
-        <form th:action="@{/signup/save}" th:method="post" class="col-md-6 right-box">
+        <form action="/save" id="signup" method="post" class="col-md-6 right-box">
+    {% csrf_token %} 
             <div class="row align-items-center">
                 <div class="header-text mb-4 " >
                     <h2>Sign Up!</h2>
                     <p>To start your new journey!</p>
                 </div>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control-lg bg-light fs-6" placeholder="Email Address" name="email" style="width: 100%">
+                <div class="input-group mb-10">
+                    <input type="text" id="name_input" class="form-control-lg bg-light fs-6" placeholder="Name" name="name_input" style="width: 100%">
+                <div class="input-group mt-2">
+                    <input type="text" id="email_input" class="form-control-lg bg-light fs-6" placeholder="Email Address" name="email_input" style="width: 100%">
                 </div>
-                <div class="input-group mb-1">
-                    <input type="password" class="form-control-lg bg-light fs-6" placeholder="Password" name="password" style="width: 100%;">
+                <div class="input-group mt-2">
+                    <input type="password" id="password_input" class="form-control-lg bg-light fs-6" placeholder="Password" name="password_input" style="width: 100%;">
                 </div>
 
-                <div class="input-group mb-1">
-                    <input type='password' class="form-control-lg bg-light fs-6" placeholder="Confirm Password" name="confirm" style="width: 100%;" />
+                <div class="input-group mb-1 mt-2">
+                    <input type='password' id="con_password_input" class="form-control-lg bg-light fs-6" placeholder="Confirm Password" name="con_password_input" style="width: 100%;" />
                 </div>
 
      
@@ -73,7 +77,10 @@
             <div class="row">
                 <small>Already have an account?<a href="/login"> Log In</a></small>
             </div>
-        </form>
+            
+        </div>
+        
+    </form>
     </div>
 
 </div>

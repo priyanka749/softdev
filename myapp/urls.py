@@ -10,13 +10,13 @@ from .views import profile
 from myapp import views
 from . import views
 
-# from .views import AnimaList
 
 urlpatterns =[
     path('', views.dash,name='dash'),
     path('signup/', views.signup, name='signup'),
-    path('login/',views.login,name='login'),
-    path('contact/', views.contact, name='contact'),
+    path('save', views.save, name='save'),
+    path('login_view/',views.login_view,name='login'),
+    # path('contact/', views.contact, name='contact'),
     path('dash/', views.dash, name='dash'),
     path('faq/',views.faq,name='faq'),
     path('aboutus/',views.aboutus,name='aboutus'),
@@ -32,8 +32,8 @@ urlpatterns =[
     path('show_more/',views.SearchView, name='show_more'),
 
     path('donation_form/',views.save_donateInfo, name='save_donateInfo'),
-    
-   
+    path('adoption_form', views.adoption_form, name='adoption_form'),
+  
 ]
 
 
