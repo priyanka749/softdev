@@ -25,7 +25,7 @@ urlpatterns =[
 
     path('showpets/<str:animal_type>/<int:pet_id>/', views.profile, name='profile'),
 
-    path('contact/', views.contact_view, name='contact'),
+    path('contact_view/', views.contact_view, name='contact_view'),
     path('showcats/',views.showcats, name='showcats'),
     path('showbirds/',views.showbirds, name='showbirds'),
 

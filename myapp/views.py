@@ -66,10 +66,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 
 def signup(request):
-    
-
-        # Redirect to a success page or login page
-    # Replace 'login' with your login URL name
       
     return render(request, 'signup.html')  # Render the signup page
 
@@ -112,11 +108,7 @@ def contact_view(request):
             subject=subject,
             message=message
         )
-        # c.name=name
-        # c.email=email
-        # c.telephone=telephone
-        # c.subject=subject
-        # c.message=message
+    
         c.save()
         
     return render(request, 'contact_view.html')
