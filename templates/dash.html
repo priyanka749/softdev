@@ -19,6 +19,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
     />
+    <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="myproject\templates\Static\css\dash.css">
    <link rel="stylesheet" type="text/css" href="{% static 'css/dash.css' %}">
     <title>Pet Adoption</title>
@@ -48,13 +49,13 @@
             </li>
   
             <li>
-              <a href="/contact/">Contact Us</a>
+              <a href="/contact_view/">Contact Us</a>
             </li>
           </div>
   
           <div class="flex flex-row space-x-8 mr-36">
             <li>
-              <a href="/login/">LOGIN</a>
+              <a href="/login_view/">LOGIN</a>
             </li>
   
             <li>
@@ -70,7 +71,7 @@
       
     </section>
     <section>
-      <h2>BROWSE PETS</h2>
+      <h2 class="-mt-10">BROWSE PETS</h2>
 
       <ul class="shop-pets">
         <li class="card-large card-light" id="sup-dog">

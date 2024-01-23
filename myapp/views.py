@@ -164,6 +164,8 @@ def showpets(request):
         behavior = request.POST.get('behavioursInput')
         age = request.POST.get('ageInput')
         weight = request.POST.get('sizeInput')
+        dog_Description=request.POST.get('dog_Description')
+        
 
         # Filter the queryset based on form data
         animalData = Animal_dog.objects.filter(

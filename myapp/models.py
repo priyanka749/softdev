@@ -73,6 +73,9 @@ class Animal_dog(models.Model):
     age = models.IntegerField(default='default_behavior', choices=AGE_CHOICES)
     weight = models.CharField(max_length=255, default='default_behavior', choices=SIZE_CHOICES)
     image = models.ImageField(upload_to='animal_images/', default='default_image.jpg')
+    dog_Description = models.CharField(max_length=1000,default='')
+    dog_History = models.CharField(max_length=1000,default='Sorry we do not have much history on this dog.')
+    
     def __str__(self):
         return self.name
 
@@ -116,6 +119,8 @@ class Cats(models.Model):
     weight = models.CharField(max_length=255, default='default_behavior', choices=SIZE_CHOICES)
     Friendliness=models.CharField(max_length=255, default='medium', choices=Friendliness_options)
     image = models.ImageField(upload_to='animal_images/', max_length=250,null=True,default='default_image.jpg')
+    cat_Description = models.CharField(max_length=1000,default='')
+    cat_History = models.CharField(max_length=1000,default='Sorry we do not have much history on this dog.')
     def __str__(self):
         return self.name
 
@@ -168,14 +173,14 @@ class Birds(models.Model):
     size = models.CharField(max_length=255, default='10-20 small lbs', choices=SIZE_CHOICES)
     friendliness = models.CharField(max_length=255, default='Outgoing', choices=FRIENDLINESS_CHOICES)
     image = models.ImageField(upload_to='pet_images/', max_length=250, null=True, default='default_image.jpg')
+    bird_Description = models.CharField(max_length=1000,default='')
+    bird_History = models.CharField(max_length=1000,default='Sorry we do not have much history on this dog.')
 
     def __str__(self):
         return self.name
 
 
-
 class other_animals(models.Model):
-
     animal_id=models.AutoField(primary_key=True)
     animal= models.CharField(max_length=100)
     age=models.IntegerField(default=1)
@@ -196,6 +201,10 @@ class Donation_data(models.Model):
 
     image = models.ImageField(upload_to='donation_images/', null=True, blank=True)
 
+    animal_Description = models.CharField(max_length=1000,default='')
+    animal_History = models.CharField(max_length=1000,default='Sorry we do not have much history on this Animal.')
+    about_species = models.CharField(max_length=1000,default='specific')
+    
     def __str__(self):
         return f"Donation #{self.donate_id} - {self.full_name}"
 
