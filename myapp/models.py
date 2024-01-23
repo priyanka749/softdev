@@ -237,7 +237,5 @@ class ContactMessage(models.Model):
     message = models.TextField()
 
     def __str__(self):
-        return self.name
-
-    
+        return self.name    
 from django.db import models

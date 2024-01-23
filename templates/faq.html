@@ -63,7 +63,6 @@
     </nav>
 
   </header>
-
   <div class="flex pl-20p ml-10 pt-10 pr-10 ">
     <div class="bg-white rounded-lg shadow-lg border border-[#db7f67] ">
 
@@ -97,13 +96,22 @@
     </div>
 
     <div class="pr-10"> 
-        <img src="static/assets/image/carr.jpg" class=" ml-14 rounded-lg  w-64 h-80 shadow-2xl ">
+      <a href="/showpets/">
+        <button class="DOG  ml-14  justify-center items-center  bg-white w-64 h-84  mt-30p hover:bg-[#6D6875] hover:text-white rounded-lg custom-border shadow-2xl" id="view_all"> 
+          <div class="flex flex-col">
+              <img src="{%static 'image/carr.jpg'%}" class=" h-64 rounded-lg">
+              <div class="m-2">VIEW DOGS AVAILABLE RIGHT NOW.</div>
+          </div>
+      </button>
+       </a>
+       <a href="/showcats/">
         <button class="DOG mt-10 ml-14  justify-center items-center  bg-white w-64 h-84  mt-30p hover:bg-[#6D6875] hover:text-white rounded-lg custom-border shadow-2xl" id="view_all"> 
-            <div class="flex flex-col">
-                <img src="Static/assets/image/aston.jpeg" class=" h-64">
-                <div class="m-2">VIEW ANIMALS AVAILABLE RIGHT NOW.</div>
-            </div>
-        </button>
+          <div class="flex flex-col">
+              <img src="{%static 'image/carr.jpg'%}" class=" h-64 rounded-lg">
+              <div class="m-2">VIEW CAtS AVAILABLE RIGHT NOW.</div>
+          </div>
+      </button>
+       </a>
     </div>
   </div>
 
