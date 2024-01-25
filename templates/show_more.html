@@ -12,6 +12,7 @@
 
 
   <link rel="stylesheet" type="text/css" href="{% static 'css/showpets.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&family=Tinos:wght@700&display=swap"
     rel="stylesheet">
@@ -94,7 +95,7 @@
       <div class="flex flex-wrap justify-evenly my-11 ml-5 mt-5">
         {% if posts %}
             {% for n in posts %}
-                <div class="flex flex-col bg-[#f6edeb] w-52 mr-8 h-80 -ml-4 rounded-lg border border-[#db7f67] mt-6">
+                <div class="flex flex-col bg-white w-52 mr-8 h-80 -ml-4 rounded-lg border border-[#db7f67] border-2 mt-6">
                     <div class="flex flex-col items-center justify-center my-4 font-bold">
                         {% if n.image %}
                             <img src="{{ n.image.url }}" alt="Animal Image" class="w-40 h-auto mb-4 rounded-lg">
@@ -136,40 +137,7 @@
 
   </div>
 
-  <style>
-    .footer {
-      font-size: 16px;
-      padding: 10px 0px;
-      color: #db7f67;
-      border-color: #db7f67;
-    }
 
-    .footer .copyright {
-      text-align: left;
-      color: white;
-      padding-left: 20px;
-    }
-
-    .copyright:hover {
-      color: #db7f67;
-    }
-
-    .social-icons {
-      text-align: right;
-    }
-
-    .social-icon {
-      color: #db7f67;
-      font-size: 16px;
-      margin-right: 20px;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    #footer:hover {
-      background-color: #f6edeb;
-    }
-  </style>
 
   <footer id="footer" class="footer mt-auto bg-[#db7f67] border border-[#f6edeb] hover:bg-[#f6edeb]">
     <div class="container">

@@ -223,24 +223,56 @@ def profile(request, pet_id, animal_type):
 from .models import Cats 
 # ONLY FOR CATS
 def showcats(request):
+    catData = Cats.objects.all()
 
-    catData=Cats.objects.all()
-    
+    if request.method == 'POST':
+        print(request.POST)
+        name = request.POST.get('name')
+        color = request.POST.get('colour')
+        age = request.POST.get('age')
+        weight = request.POST.get('weight')
+        Friendliness = request.POST.get('Friendliness')
 
-    data={
-        'catData':catData
-    }
+        # Filter the queryset based on form datas
+        catData = Cats.objects.filter(
+            Q(name=name) if name else Q(),
+            Q(color=color) if color else Q(),
+            Q(age=age) if age else Q(),
+            Q(weight=weight) if weight else Q(),
+            Q(friendliness=Friendliness) if Friendliness else Q(),
+        )
+        print("Search results: ")
+        print(catData)
 
-    return render(request, 'showcats.html',data)  # Assuming your form is in showpets.html
+    else:
+        # If the form is not submitted, show all cat records
+        catData = Cats.objects.all()
+
+    data = {'catData': catData}
+    return render(request, 'showcats.html', data)
+
 
 from .models import Birds 
 # ONLY FOR brids
 def showbirds(request):
-    BirdsData=Birds.objects.all() 
-    data={
-        'BirdsData':BirdsData
-    }
-    return render(request, 'showbirds.html',data)  
+    birdData = Birds.objects.all()
+
+    if request.method == 'POST':
+        petname = request.POST.get('petName')
+        species = request.POST.get('breedInput')
+        color = request.POST.get('colourInput')
+        age = request.POST.get('ageInput')
+
+        # Filter the queryset based on form data
+        birdData = Birds.objects.filter(
+            Q(name__icontains=petname),
+            Q(species=species) if species else Q(),
+            Q(color=color) if color else Q(),
+            Q(age=age) if age else Q(),
+        )
+
+    data = {'birdData': birdData}
+    return render(request, 'showbirds.html', data)
 
 def donation_form(request):
     

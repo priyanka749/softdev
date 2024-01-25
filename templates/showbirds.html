@@ -8,8 +8,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-  <a href="{url 'profile' pet_id=animal.id%}">{{animal.name}}</a>
-
+  <a href="{url 'profile' pet_id=animal.id%}">{{bird.name}}</a>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
 
   <link rel="stylesheet" type="text/css" href="{% static 'css/showpets.css' %}">
 
@@ -66,7 +66,7 @@
 
   </header>
 
-  <from action="/showpets" method="post" id="showpets"></from>
+  <form action="/showbirds/" method="post" id="showbirds">
 
   <div class="flex flex-row flex-1 w-full md:w-auto">
     <div class="bg-white flex">
@@ -77,54 +77,45 @@
       <div class="flex flex-col bg-[#f6edeb] bottom-1 rounded-lg w-80 my-11 ml-10 mr-5">
 
         <div class="flex flex-col mt-4 mr-8 ml-8 font-bold ">
-          <label for="petname ml-4 mt-2">Pet Name</label>
-          <input type="text" placeholder="Search by pet name" class="mt-2 p-2 rounded-lg">
+          <label for="petname" class="ml-4 mt-2">Bird  Name</label>
+          <input id="petName" name="petName" type="text" placeholder="Search by pet name" class="mt-2 p-2 rounded-lg">
         </div>
 
         <div>
           <div class="mt-4 mb-4 mr-8 ml-8">
-            <label for="breed" class="block font-bold">Breed</label>
-            <select id="breed" name="breed" class="mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
-              <option value="German Shepher">German Shepherd</option>
-              <option value="Bulldog">Bulldog</option>
-              <option value="French Bulldog">French Bulldog</option>
-              <option value="Golden Retriever">Golden Retriever</option>
-              <option value="Chow Chow">Chow Chow</option>
+            <label for="breed" class="block font-bold">species</label>
+            <select id="breedInput" name="breedInput" class="mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
+              <option value="" selected>Select</option>
+              <option value="German Shepherd"> parrot</option>
+              <option value="Bulldog">pigeon</option>
+              <option value="French Bulldog">owl</option>
+              <option value="Golden Retriever">peacock</option>
+              <option value="Golden Retriever">Sparrow</option>
+              <option value="Chow Chow">turkey</option>
             </select>
           </div>
         </div>
 
         <div class="mb-4 mr-8 ml-8">
           <label for="colour" class="block font-bold">Colour</label>
-          <select id="colour" name="colour" class="mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
+          <select id="colour" name="colourInput" class="mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
+            <option value="" selected>Select</option>
             <option value="black">Black</option>
             <option value="brown">Brown</option>
             <option value="white">White</option>
             <option value="grey">Grey</option>
             <option value="red">Red</option>
-            <option value="blue">Blue</option>
-            <option value="gold">Gold</option>
-            <option value="cream">Cream</option>
+            <option value="blue">green</option>
+           
           </select>
         </div>
 
-        <div class="mb-4 mr-8 ml-8">
-          <label for="behaviours" class="block font-bold">Behaviours</label>
-          <select id="behaviours" name="behaviours"
-            class="mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
-            <option value="Digging">Digging</option>
-            <option value="Eating Poop">Eating Poop</option>
-            <option value="Head Pressing">Head Pressing</option>
-            <option value="Scooting">Scooting</option>
-            <option value="Yawning">Yawning</option>
-            <option value="Biting">Biting</option>
-            <option value="Circling">Circling</option>
-          </select>
-        </div>
+      
 
         <div class="mb-4 mr-8 ml-8 ">
           <label for="behaviours" class="block font-bold ">Age</label>
-          <select id="a" name="age" class="mt-2 mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
+          <select id="ageInput" name="ageInput" class="mt-2 mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
+            <option value="" selected>Select</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
@@ -135,38 +126,35 @@
           </select>
         </div>
 
-        <div class="mb-4 mr-8 ml-8 ">
-          <label for="behaviours" class="block font-bold ">Weight</label>
-          <select id="size" name="size" class="mt-2 mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
-            <option value="10-20 small lbs">1 Queen Pillow</option>
-            <option value="30-40 lbs medium">2 Standard Pillows</option>
-            <option value="50-60 lbs large">2 King Pillows</option>
-            <option value="70-80 lbs xl">3 King Pillows</option>
-          </select>
-        </div>
+     
+    <button type="submit" class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Search</button>
+
       </div>
     </div>
+  </form>
 
     <div class="flex flex-wrap justify-evenly my-11 ml-5 mt-5">
-      {%for n in animalData %}
+      {%for n in birdData %}
 
-      <div class="flex flex-col bg-[#f6edeb] w-52 mr-8 h-80  -ml-4 rounded-lg border border-[#db7f67] mt-6">
+      <div class="flex flex-col bg-[#f6edeb] w-60 mr-8 h-5/6 -ml-4 rounded-lg border border-[#db7f67] mt-6">
         <div class="flex flex-col items-center justify-center my-4 font-bold">
 
           {% if n.image %}
           <td>
             <img src="{{ request.scheme }}://{{ request.get_host }}{{ n.image.url }}" alt="Image "
-              class="w-40 h-auto mb-4 rounded-lg">
+              class="w-40 h-auto mb-5 rounded-lg">
 
           </td>
           {% else %}
           <td>
-            <img src="{% static 'image/aston.jpeg' %}" alt="Image Description" class="w-40 h-auto mb-4 rounded-lg">
+            <img src="{% static 'image/aston.jpeg' %}" alt="Image Description" class="w-44 h-auto mb-4 rounded-lg">
           </td>
           {% endif%}
 
           <p class="text-xl mb-2"> NAME: {{n.name}}</p>
+          <p class="text-lg"> species: {{n.species}} </p>
           <p class="text-lg"> Age: {{n.age}} </p>
+
           <a href="{% url 'profile' animal_type='bird' pet_id=n.bird_id %}">Dog Profile</a>
         </div>
       </div>
@@ -174,11 +162,13 @@
 
       <!-- </div> -->
 
-  
+   
+
     </div>
 
   </div>
 
+  
 
   <footer id="footer" class="footer mt-auto bg-[#db7f67] border border-[#f6edeb] hover:bg-[#f6edeb]">
     <div class="container">

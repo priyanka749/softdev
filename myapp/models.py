@@ -166,8 +166,8 @@ class Birds(models.Model):
     ]
 
     bird_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255, default='Kitty')
-    color = models.CharField(max_length=255, default='Tabby', choices=COLOR_CHOICES)
+    name = models.CharField(max_length=255, default='Bird')
+    color = models.CharField(max_length=255, default='Grey', choices=COLOR_CHOICES)
     age = models.IntegerField(default=1, choices=AGE_CHOICES)
     species = models.CharField(max_length=255, default='parrot', choices=SPECIES_CHOICES)
     size = models.CharField(max_length=255, default='10-20 small lbs', choices=SIZE_CHOICES)

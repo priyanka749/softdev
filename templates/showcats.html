@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <link src="nav.css">
   </link>
@@ -10,6 +11,7 @@
 
 
   <link rel="stylesheet" type="text/css" href="{% static 'css/showpets.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&family=Tinos:wght@700&display=swap"
     rel="stylesheet">
@@ -68,7 +70,8 @@
 
   <div class="flex flex-row flex-1 w-full md:w-auto">
 
-    <form class="bg-white flex" action="/showpets" method="post" id="showpets">
+    <form action="/showcats/" method="post" id="showcats">
+
       <!-- Use flex-row to arrange divs horizontally -->
 
       {% csrf_token %}
@@ -76,14 +79,15 @@
       <div class="flex flex-col bg-[#f6edeb] bottom-1 rounded-lg w-80 my-11 ml-10 mr-5">
 
         <div class="flex flex-col mt-4 mr-8 ml-8 font-bold ">
-          <label for="petname ml-4 mt-2">Cat's Name</label>
-          <input type="text" placeholder="Search by pet name" class="mt-2 p-2 rounded-lg">
+          <label for="name ml-4 mt-2">Cat's Name</label>
+          <input type="text" id="name" name="name" placeholder="Search by pet name" class="mt-2 p-2 rounded-lg">
         </div>
 
 
         <div class="mt-4 mb-4 mr-8 ml-8">
           <label for="colour" class="block font-bold">Colour</label>
           <select id="colour" name="colour" class="mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
+            <option value="" selected>Select</option>
             <option value="black">Black</option>
             <option value="brown">Brown</option>
             <option value="white">White</option>
@@ -97,6 +101,7 @@
         <div class="mb-4 mr-8 ml-8 ">
           <label for="behaviours" class="block font-bold ">Age</label>
           <select id="a" name="age" class="mt-2 mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
+            <option value="" selected>Select</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
@@ -108,8 +113,10 @@
         </div>
 
         <div class="mb-4 mr-8 ml-8">
-          <label for="size" class="block font-bold">Weight</label>
-          <select id="size" name="size" class="mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
+         
+          <label for="Weight" class="block font-bold">Weight</label>
+          <select id="Weight" name="Weight" class="mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
+            <option value="" selected>Select</option>
             <option value="10-20 small lbs">Small</option>
             <option value="30-40 lbs medium">Medium</option>
             <option value="50-60 lbs large">Large</option>
@@ -117,9 +124,11 @@
         </div>
 
         <div class="mb-4 mr-8 ml-8">
+          
           <label for="friendliness" class="block font-bold">Friendliness</label>
           <select id="friendliness" name="friendliness"
             class="mt-2 w-full p-2 bg-[#f6edeb] border border-[#db7f67] rounded-lg">
+            <option value="" selected>Select</option>
             <option value="Outgoing">Outgoing</option>
             <option value="very social">Very Social</option>
             <option value="Reserved">Reserved</option>
@@ -160,40 +169,7 @@
 
   </div>
 
-  <style>
-    .footer {
-      font-size: 16px;
-      padding: 10px 0px;
-      color: #db7f67;
-      border-color: #db7f67;
-    }
-
-    .footer .copyright {
-      text-align: left;
-      color: white;
-      padding-left: 20px;
-    }
-
-    .copyright:hover {
-      color: #db7f67;
-    }
-
-    .social-icons {
-      text-align: right;
-    }
-
-    .social-icon {
-      color: #db7f67;
-      font-size: 16px;
-      margin-right: 20px;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    #footer:hover {
-      background-color: #f6edeb;
-    }
-  </style>
+  
 
   <footer id="footer" class="footer bg-[#db7f67] border border-[#f6edeb] hover:bg-[#f6edeb]">
     <div class="container">
