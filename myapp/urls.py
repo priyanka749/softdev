@@ -15,6 +15,8 @@ from django.urls import path
 from django.views import View
 from .views import profile
 from myapp import views
+
+
 from . import views
 
 # from .views import AnimaList
@@ -43,7 +45,16 @@ urlpatterns =[
 
     path('api/verify_payment',verify_payment,name='verify_payment'),
 
-    path('verify_payment/', verify_payment, name='verify_payment')
+    path('verify_payment/', verify_payment, name='verify_payment'),
+    
+    path('donation/', donation, name='donation'),
+
+    
+
+    path('feedback/',views.Feedback,name='feedback')
+
+
+
 
 
     

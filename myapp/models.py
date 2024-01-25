@@ -207,10 +207,16 @@ class Donation_data(models.Model):
         return f"Donation #{self.donate_id} - {self.full_name}"
     
 
+class FeedBack(models.Model):
+    name=models.CharField( max_length=100)
+    email=models.EmailField()
+    feedback=models.TextField()
 
+    def __str__(self):
+        return self.name
 
-class Payment(models.Model):
-    transaction_id = models.CharField(max_length=100)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
-    payment_status = models.CharField(max_length=20)
+# models.py
+from django.db import models
 
+class Donation(models.Model):
+    image = models.ImageField(upload_to='donation_images/', null=True, blank=True)

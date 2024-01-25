@@ -63,23 +63,6 @@ def show_more(request):
 def login(request):
     return render(request,'login.html')
 
-def login_view(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-
-        # Authenticate user
-        user = _Authenticator(request, email=email, password=password)
-
-        if user is not None:
-            login(request, user)
-            # Redirect to a success page or perform actions after successful login
-            return redirect('dash.html') # Replace 'success_page' with your URL name
-        
-        else:
-            messages.error(request, 'Incorrect email or password. Please try again.')
-
-    return render(request, 'login.html')  # Render the login page
 
 def signup(request):
     if request.method == 'POST':
@@ -253,9 +236,10 @@ def save_donateInfo(request):
         ph_number=request.POST.get('ph_number')
         amount=request.POST.get('amount')
         message=request.POST.get('message')
+        image=request.POST.get('image')
         
 
-        record=Donation_data(full_name=full_name,email=email,phone_number=ph_number,message=message,amount=amount)
+        record=Donation_data(full_name=full_name,email=email,phone_number=ph_number,message=message,amount=amount,image=image)
         record.save()
     return render(request, 'donation_form.html') 
 
@@ -280,7 +264,7 @@ def verify_payment(request):
    "amount": amount
    }
    headers = {
-   "Authorization": "test_public_key_a114a31b9677404eaa85b6ffb5246097"
+   "Authorization": "test_secret_key_509ae363986140abbe09ce09cafaa1fb"
    }
    
 
@@ -298,3 +282,26 @@ def verify_payment(request):
    pp.pprint(response_data)
    
    return JsonResponse(f"Payment Done !! With IDX. {response_data['user']['idx']}",safe=False)
+
+def Feedback(request):
+    if request.method=="POST":
+        name=request.POST["name"]
+        email=request.POST["email"]
+        feedback=request.POST["feedback"]
+        obj=FeedBack(name=name,email=email,feedback=feedback)
+        obj.save()
+        print(f"the name is{name}, email:{email}")
+    return render(request,'feedback.html')
+
+
+# views.py
+from django.shortcuts import render, redirect
+from .models import Donation
+
+def donation(request):
+    if request.method == 'POST' and request.FILES:
+        image = request.FILES['image']
+        donation = Donation.objects.create(image=image)
+        # Add any additional logic or processing for the uploaded image here
+        return redirect('donation_success')  # Redirect to a success page
+    return render(request, 'donation.html')
