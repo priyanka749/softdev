@@ -75,7 +75,7 @@
 
       {% csrf_token %}
 
-      <div class="flex flex-col bg-[#f6edeb] bottom-1 rounded-lg w-80 my-11 ml-10 mr-5">
+      <div class="flex flex-col bg-[#f6edeb] bottom-1 rounded-lg md:w-64 sm:w-64 lg:w-80 my-11 mt-8 ml-10 mr-5 border border-[#db7f67]">
 
         <div class="flex flex-col mt-4 mr-8 ml-8 font-bold ">
           <label for="petname" class="ml-4 mt-2">Pet Name</label>
@@ -156,29 +156,36 @@
 </div>
 </form>
 
-<div class="flex flex-wrap justify-evenly my-11 ml-5 mt-5">
+<div class="flex flex-wrap justify-evenly my-11 ml-5 mt-2">
+
+
   {%for n in animalData %}
+<a href="{% url 'profile' animal_type='dog' pet_id=n.pet_id %}">
+  <div class="flex flex-col bg-[#f6edeb] w-52 mr-8 h-80  -ml-4 rounded-lg border border-[#db7f67] mt-6 hover:shadow-xl">
+    <div class=" flex flex-col items-center justify-center my-4 font-bold">
 
-  <div class="flex flex-col bg-[#f6edeb] w-52 mr-8 h-80  -ml-4 rounded-lg border border-[#db7f67] mt-6">
-    <div class="flex flex-col items-center justify-center my-4 font-bold">
+      <div class="w-40 h-48 flex items-center">
+            {% if n.image %}
+          <td>
+            <img src="{{ request.scheme }}://{{ request.get_host }}{{ n.image.url }}" alt="Image "
+              class="w-52 h-auto mb-4 rounded-lg">
+          </td>
+          {% else %}
+          <td>
+            <img src="{% static 'image/aston.jpeg' %}" alt="Image Description" class="w-40 h-auto mb-4 rounded-lg object-cover">
+          </td>
+          {% endif%}
+      </div>
 
-      {% if n.image %}
-      <td>
-        <img src="{{ request.scheme }}://{{ request.get_host }}{{ n.image.url }}" alt="Image "
-          class="w-40 h-auto mb-4 rounded-lg">
+      <p class="text-2xl mb-1 -mt-1 "> {{n.name}}</p>
+      <p class="text-lg font-medium"> {{n.breed}} </p>
+      <p class="text-lg font-medium"> Age: {{n.age}} </p>
+      
 
-      </td>
-      {% else %}
-      <td>
-        <img src="{% static 'image/aston.jpeg' %}" alt="Image Description" class="w-40 h-auto mb-4 rounded-lg">
-      </td>
-      {% endif%}
-
-      <p class="text-xl mb-2"> NAME: {{n.name}}</p>
-      <p class="text-lg"> Age: {{n.age}} </p>
-      <a href="{% url 'profile' animal_type='dog' pet_id=n.pet_id %}">Dog Profile</a>
+      
     </div>
   </div>
+</a>
   {% endfor %}
 
   <!-- </div> -->

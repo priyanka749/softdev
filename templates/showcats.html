@@ -143,9 +143,10 @@
 
     <div class="flex flex-wrap justify-evenly my-11 ml-5 ">
 
+    
       {%for n in catData %}
-
-      <div class="flex flex-col bg-[#f6edeb] w-64 h-80 mt-0 mx-2 rounded-lg border border-[#db7f67]">
+      <a href="{% url 'profile' animal_type='cats' pet_id=n.cat_id %}"></a>
+      <div class="flex flex-col bg-[#f6edeb] w-48 h-72  mt-0 mx-2 rounded-lg border border-[#db7f67] hover:shadow-xl">
         <div class="flex flex-col items-center justify-center my-4 font-bold">
 
           {% if n.image %}
@@ -158,11 +159,12 @@
           </td>
           {% endif%}
 
-          <p class="text-xl mb-2"> NAME: {{n.name}}</p>
-          <p class="text-lg"> Age: {{n.age}} </p>
-          <a href="{% url 'profile' animal_type='cats' pet_id=n.cat_id %}">Cat Profile</a>
+          <p class="text-2xl mb-1 -mt-2"> {{n.name}}</p>
+          <p class="text-lg font-medium"> Age: {{n.age}} </p>
+          
         </div>
       </div>
+    </a>
       {% endfor %}
 
     </div>

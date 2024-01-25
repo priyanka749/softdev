@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="profile.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/showpets.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
 
 </head>
 <body class="bg-white">
@@ -53,9 +54,9 @@
 <div class=" border lg:mx-48 lg:my-12 md:mx-10 md:my-8 sm:mx-10 sm:my-8 rounded-lg border-[#db7f67] shadow-xl">
   <div class="flex ">
     <!-- Image taking up the left half of the page (smaller width) -->
-    <div class="w-96 md:mx-8 md:my-8 ">
+    <div class="flex items-center w-96 md:mx-8 md:my-8 sm:m-2 sm:p-5 sm:mt-16 lg:m-1 overflow-hidden">
         {% if pet.image %}
-            <div class="mb-4">
+            <div class="mb-4 md:m-2">
                 <img src="/media/{{ pet.image }}" alt="Cat Image" class="w-3/4 lg:w-full h-auto rounded-lg">
             </div>
         {% else %}
@@ -66,7 +67,7 @@
     </div>
   
     <!-- Description taking up the right half of the page -->
-    <div class=" lg:w-1/2 p-8">
+    <div class=" lg:w-1/2 p-8 lg:p-5 lg:-ml-12 sm:p-5 sm:-ml-24">
         <div class="">
           <p class="text-5xl font-semibold mb-6"> {{ pet.name }}</p>
             <div class="border border-[#db7f67] rounded-lg mb-8 shadow-lg">
@@ -81,23 +82,19 @@
             <button id="adoptButton" class="bg-[#FFB4A1] text-white font-bold py-2 px-4 rounded">
               Adopt Pet
           </button>
-
+<!-- 
             <button id="ENQUIRY" class="bg-[#FFB4A1] text-white font-bold py-2 px-4 rounded">
               Adopt Pet
-          </button>
+          </button> -->
 
         </div>
-    </div>
-
-        
-     
+    </div>     
   </div>
-
   <div>
         
           <div class="sm:mx-2 sm:my-2 md:mx-5 md:my-5 lg:mx-8 lg:my-8 flex lg:flex-row sm:flex-col  ">
-            <p class="w-full text-xl border rounded-lg m-2"> more: {{pet.dog_Description}}</p>
-          ` <p class="border rounded-lg"> history: {{pet.dog_History}}</p>
+            <p class="w-full text-xl border rounded-lg m-2"> MORE: {{pet.dog_Description}}</p>
+          ` <p class="border rounded-lg"> HISTORY: {{pet.dog_History}}</p>
           </div>
   </div>
   
@@ -125,55 +122,6 @@
 
 
   <script src="your-javascript-file.js"></script>
-
-
-
-      <style>
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .footer {
-            font-size: 16px;
-            padding: 10px 0px;
-            color: #db7f67;
-            border-color: #db7f67;
-            margin-top: auto; /* Push the footer to the bottom */
-        }
-
-        .footer .copyright {
-            text-align: left;
-            color: white;
-            padding-left: 20px;
-        }
-
-        .copyright:hover {
-            color: #db7f67;
-        }
-
-        .social-icons {
-            text-align: right;
-        }
-
-        .social-icon {
-            color: #db7f67;
-            font-size: 16px;
-            margin-right: 20px;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        #footer:hover {
-            background-color: #f6edeb;
-        }
-    </style>
-
-
-    
 
     <footer id="footer" class="footer bg-[#db7f67] border border-[#f6edeb] hover:bg-[#f6edeb]">
         <div class="container">
