@@ -252,3 +252,11 @@ def Feedback(request):
         obj.save()
         print(f"the name is{name}, email:{email}")
     return render(request,'feedback.html')
+
+
+
+
+
+# def feedback_view(request):
+#     feedback_list = Feedback.objects.filter(user=request.user)
+#     return render(request, 'feedback_template.html', {'feedback_list': feedback_list})

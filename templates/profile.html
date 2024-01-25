@@ -60,40 +60,43 @@
         </nav>
       </header>
 
-<div class="center container relative">
-  
-  {% if pet.image %}
-        <td> 
-          <img src="/media/{{ pet.image }}" alt="Cat Image" class="w-40 h-auto mb-4 rounded-lg">
-        </td>
+<div class="flex flex-col lg:flex-row items-center justify-center min-h-screen mt-0 ml-7">
+  <!-- Image taking up the left half of the page (smaller width) -->
+  <div class="w-full lg:w-1/2">
+      {% if pet.image %}
+          <div class="mb-4">
+              <img src="/media/{{ pet.image }}" alt="Cat Image" class="w-3/4 lg:w-full h-auto rounded-lg">
+          </div>
       {% else %}
-        <td> 
-          <img src="{% static 'image/aston.jpeg' %}" alt="Default Cat Image" class="w-40 h-auto mb-4 rounded-lg">
-        </td>
+          <div class="mb-4">
+              <img src="{% static 'image/aston.jpeg' %}" alt="Default Cat Image" class="w-3/4 lg:w-full h-auto rounded-lg">
+          </div>
       {% endif %}
-      
-      <p class="text-xl mb-2"> NAME: {{ pet.name }}</p>
-      <p class="text-lg"> Age: {{ pet.age }} </p>
-      <p class="text-lg"> Color: {{ pet.color }} </p>
-      <p class="text-lg">Breed: {{pet.breed}}</p>
-      <p class="text-lg">Weight: {{pet.weight}}</p>
-      <p class="text-lg">Behaviour: {{pet.behavior}}</p>
-      <p>{{pet.description}}</p>
-      <!-- Add other fields as needed -->
+  </div>
 
-     
-  {% comment %} <h1>{{animal.name}}</h1>
-  <p>{{animal.description}}</p>
-  <p>Species: {{animal.species}}</p> {% endcomment %}
+  <!-- Description taking up the right half of the page -->
+  <div class="w-full lg:w-1/2 p-8">
+      <div class="text-center">
+          <p class="text-xl mb-2"> NAME: {{ pet.name }}</p>
+          <p class="text-lg"> Age: {{ pet.age }} </p>
+          <p class="text-lg"> Color: {{ pet.color }} </p>
+          <p class="text-lg">Breed: {{pet.breed}}</p>
+          <p class="text-lg">Weight: {{pet.weight}}</p>
+          <p class="text-lg">Behaviour: {{pet.behavior}}</p>
+          <p>{{pet.description}}</p>
+      </div>
+  </div>
+
+
+  <div class="w-full text-center mt-4">
+      <button id="adoptButton" class="bg-[#FFB4A1] text-white font-bold py-2 px-4 rounded">
+          Adopt Pet
+      </button>
+  </div>
 </div>
-<div class="absolute-buttons">
-  <button id="adoptButton" class="ml-10 bg-[#EAD8CE] text-white font-bold py-2 px-4 rounded">
-      Adopt Pet
-  </button>
-  <button id="favoritesButton" class="bg-[#ead8ce] text-white font-bold py-2 px-4 rounded">
-      Add to Favorites
-  </button>
-</div>
+
+
+</body>
 
 <style>
 
