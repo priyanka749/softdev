@@ -22,6 +22,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="myproject\templates\Static\css\dash.css">
    <link rel="stylesheet" type="text/css" href="{% static 'css/dash.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
     <title>Pet Adoption</title>
 
   </head>
@@ -66,83 +67,87 @@
       </nav>
   
     </header>
-    <section class="hero">
-      <h1>Your One-Stop To Find your Companion!</h1>
-      
-    </section>
-    <section>
-      <h2 class="-mt-10">BROWSE PETS</h2>
+    <section class="hero ">
+      <h1>Your One-Stop To Find your Companion!</h1>  
 
-      <ul class="shop-pets">
-        <li class="card-large card-light" id="sup-dog">
+      <button class=" text-3xl font-semibold text-[#45413e] "> #Donate </button>   
+    </section>
+
+    <section>
+      <h2 class="-mt-6">BROWSE PETS</h2>
+
+      <ul class="shop-pets ">
+
+        <a href="{% url 'showpets' %}">
+        <li class="card-large card-light h-64" id="sup-dog">
+
           <div class="card-image">
             <img src="https://imgs.search.brave.com/hsqhm4TVvtbv_t5Xj5yvD5GTrWLmfoSdNcjyitmgeSE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9kb2ct/MTU2OTc2MDEuanBn" />
           </div>
-          <ul>
+          <ul class="text-center">
             ----DOGS----
-            <a href="{% url 'showpets' %}">
-              <button class="btn-outline-light">
-                Adopt All<span class="material-symbols-outlined">
-                  arrow_forward
-                </span>
-              </button>
-            </a>
+            
             
           </ul>
         </li>
+      </a>
 
-        <li class="card-large card-dark" id="sup-cat">
+      <a href="{% url 'showcats' %}">
+        <li class="card-large card-dark h-64" id="sup-cat">
           <div class="card-image">
             <img src="https://i.pinimg.com/564x/52/db/e2/52dbe2f265defe6e76f2247ba94c4b17.jpg" />
           </div>
           <ul>
-            -----Cats-----
-          
-            <a href="{% url 'showcats' %}">
-              <button class="btn-outline-light">
-                Adopt All<span class="material-symbols-outlined">
-                  arrow_forward
-                </span>
-              </button>
-            </a>
+            -----Cats----
+                      
           </ul>
         </li>
+      </a>
 
-        <li class="card-large card-dark" id="sup-bird">
+      <a href="{% url 'showbirds' %}">
+        <li class="card-large card-dark h-64" id="sup-bird">
           <div class="card-image">
             <img src="https://imgs.search.brave.com/8Sndr-Iq2jsa4YDHAaZ7WOk9KSaLxJjcQWjs9Dr_ytY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNjE0/NzE1ODQyL3Bob3Rv/L3R3by1zaW1pbGFy/LWJpcmRzLXRpdG1v/dXNlLXNpdHRpbmct/b24tYS1icmFuY2gu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PU1XbEwxVEh1Qy1r/QW9CNlRDOVZnYktf/SXg1Vm1yd2ZiQlhw/NlNQRm93TDQ9" />
           </div>
           <ul>
-            -----BIRDS-----
-            
-            <a href="{% url 'showbirds' %}">
-              <button class="btn-outline-light">
-                Adopt All<span class="material-symbols-outlined">
-                  arrow_forward
-                </span>
-              </button>
-            </a>
+            -----BIRDS-----                      
           </ul>
         </li>
-        <li class="card-large card-light" id="sup-fish">
+      </a>
+
+      <a href="{% url 'show_more' %}">
+        <li class="card-large card-light h-64" id="sup-fish">
           <div class="card-image">
             <img src="https://imgs.search.brave.com/lb2Tf4t7vQRBXx8yVAKyGKLo_xFX0MPtdA7i09cFtkk/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNDcz/MDEyNjYwL3Bob3Rv/L2dyZXktc3F1aXJy/ZWwteWF3bmluZy5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/NXp5b1FPTHJDQnRR/cEpIN1UtZElVN3k1/QkpOOURBaUdFRDN0/ODc5dTJSUT0" />
           </div>
           <ul>
             ----OTHERS----
-            
-            <a href="{% url 'show_more' %}">
-              <button class="btn-outline-light">
-                Adopt All<span class="material-symbols-outlined">
-                  arrow_forward
-                </span>
-              </button>
-            </a>
+               
           </ul>
         </li>
+      </a>
+
       </ul>
     </section>
+<!-- donation form  -->
+<div class="flex md:justify-evenly bg-[#f6edeb] lg:mr-40 lg:ml-40 md:mr-20 md:ml-20 sm:mr-20 sm:ml-20 h-72 mt-0  rounded-lg border border-db7f67 hover:shadow-xl p-6 transition-all duration-500">
+  <div>
+      <p class="lg:text-4xl md:text-3xl sm:text-3xl text-[#45413e] font-semibold">   
+          Paws for a Cause: <br>
+          Unleash Love, Support, and Help Provide <br> Fur-ever Homes with Your Donation!
+      </p>
+      <p class="text-white text-4xl">
+          <a href="{% url 'save_donateInfo' %}">donate</a>
+      </p>
+  </div>
 
+  <div class=" flex justify-center:ml-20 md:10 sm:10 ">
+      <img src="{%static 'image/adoptm.png'%}" alt="" class=" lg:w-80 md:64 sm:64 h-auto rounded-lg">
+  </div>
+</div>
+
+
+<!-- ---------------------- -->
     <section>
       <h2>Our Services</h2>
 
@@ -189,43 +194,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
     <script src="Static\javascript\dash.js"></script>
 
-    <style> 
-
-   
-      .footer {
-    font-size: 16px;
-    padding: 10px 0px;
-    color: #db7f67;
-  }
   
-  .footer .copyright {
-    text-align: left;
-    color: white; 
-    padding-left: 20px;;
-  }
-  
-  .social-icons {
-    text-align: right;
-  }
-  
-  .social-icon {
-    color: #db7f67; 
-    font-size: 16px;
-    margin-right: 20px;
-    text-decoration: none;
-    transition: color 0.3s; 
-  }
-  
-  .social-icon:hover {
-    color: #007bff; 
-  }
-
-  #footer:hover {
-    background-color: #db7f67; /* Your desired hex color */
-  }
-  </style>
-  
-      <footer id="footer" class="footer  hover:bg-[#db7f67]">
+      <footer id="footer" class="footer  ">
         <div class="container">
           <div class="row">
             <div class="col-md-6">

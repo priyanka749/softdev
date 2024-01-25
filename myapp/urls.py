@@ -9,7 +9,7 @@ from django.views import View
 from .views import profile
 from myapp import views
 from . import views
-
+from .views import *
 
 urlpatterns =[
     path('', views.dash,name='dash'),
@@ -33,7 +33,10 @@ urlpatterns =[
 
     path('donation_form/',views.save_donateInfo, name='save_donateInfo'),
     path('adoption_form', views.adoption_form, name='adoption_form'),
-  
+    
+    path('api/verify_payment',verify_payment,name='verify_payment'),
+
+    path('verify_payment/', verify_payment, name='verify_payment'),
 ]
 
 

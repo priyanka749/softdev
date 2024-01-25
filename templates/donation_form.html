@@ -1,3 +1,4 @@
+
 {% load static %}
 
 <!DOCTYPE html>
@@ -58,9 +59,95 @@
         <div class="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-[#f6edeb] to-[#f6edeb] i justify-around  hidden ">
             <div>
                 <h1 class="text-[#db7f67] font-bold text-4xl font-sans mt-12 -ml-4">DONATE HERE</h1>
-                <img src="{% static 'image/ESEWA.jpg' %}" alt="QR" class="w-48 h-auto mb-4 rounded-lg">
-                <p class="text-[#db7f67] font-bold">E-SEWA</p>
-                <button type="submit" class="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2">Read More</button>
+                <img src="https://pbs.twimg.com/media/FKbqverUUAYTzow.jpg"  class="w-80
+                 h-auto mb-10 rounded-lg">
+                <p class="text-[#db7f67] font-bold"></p>
+              </head>
+              <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
+          </head>
+          <body>
+              <script>
+          
+              function verifyPayment(payload) {
+                  $.ajax({
+                      url: "{% url 'verify_payment' %}",
+                      type: "POST",
+                      data: payload,
+                      dataType: 'json',
+                      success: function (response) { alert(response) },
+                      error: function (error) { alert(error.responseJSON['message']) }
+                  });
+              }
+          
+          
+                  
+                  var config = {
+                      // replace the publicKey with yours
+                      "publicKey": "test_public_key_a114a31b9677404eaa85b6ffb5246097",
+                      "productIdentity": "1234567890",
+                      "productName": "Dragon",
+                      "productUrl": "http://gameofthrones.wikia.com/wiki/Dragons",
+                      "paymentPreference": [
+                          "KHALTI",
+                          "EBANKING",
+                          "MOBILE_BANKING",
+                          "CONNECT_IPS",
+                          "SCT",
+                          ],
+                      "eventHandler": {
+                          onSuccess (payload) {
+                              // hit merchant api for initiating verfication
+                              console.log(payload);
+                          },
+                          onError (error) {
+                              console.log(error);
+                          },
+                          onClose () {
+                              console.log('widget is closing');
+                          }
+                      }
+                  };
+          
+                  var checkout = new KhaltiCheckout(config);
+                  var btn = document.getElementById("payment-button");
+                  btn.onclick = function () {
+                      // minimum transaction amount must be 10, i.e 1000 in paisa.
+                      checkout.show({amount :10000});
+                  }
+              </script>
+          
+          
+                 
+    <!-- Place this where you need payment button -->
+    <style>
+      /* Styles for Pay with Khalti button */
+      #payment-button {
+          display: inline-block;
+          padding: 10px 20px;
+          font-size: 16px;
+          font-weight: bold;
+          text-align: center;
+          text-decoration: none;
+          cursor: pointer;
+          border: 2px solid #28a745; /* Green border color */
+          color: #28a745; /* Green text color */
+          border-radius: 5px; /* Rounded corners */
+          background-color: #ffffff; /* White background color */
+          transition: background-color 0.3s, color 0.3s; /* Smooth transition on hover */
+      }
+
+      #payment-button:hover {
+          background-color: #28a745; /* Green background color on hover */
+          color: #ffffff; /* White text color on hover */
+      }
+  </style>
+  <div class="col-sm-12 col-md-6 text-right">
+      <button id="payment-button" class="btn btn-outline-success">Pay with Khalti</button>
+      
+  </div>
+
+
+ 
             </div>
    
         </div>
@@ -109,8 +196,77 @@
       </div>
 
       <!-- for uploading file / image-->
+    
+      <div class="w-[400px] relative border-2 border-gray-300 border-dashed rounded-lg p-6" id="dropzone">
+        <input type="file" class="absolute inset-0 w-full h-full opacity-0 z-50" />
+        <div class="text-center">
+            <img class="mx-auto h-12 w-12" src="https://www.svgrepo.com/show/357902/image-upload.svg" alt="">
+    
+            <h3 class="mt-2 text-sm font-medium text-gray-900">
+                <label for="file-upload" class="relative cursor-pointer">
+                    <span>Drag and drop</span>
+                    <span class="text-indigo-600"> or browse</span>
+                    <span>to upload</span>
+                    <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                </label>
+            </h3>
+            <p class="mt-1 text-xs text-gray-500">
+                PNG, JPG, GIF up to 10MB
+            </p>
+        </div>
+    
+        <img src="" class="mt-4 mx-auto max-h-40 hidden" id="preview">
+    </div>
+    
+    <script>
+        var dropzone = document.getElementById('dropzone');
+    
+        dropzone.addEventListener('dragover', e => {
+            e.preventDefault();
+            dropzone.classList.add('border-indigo-600');
+        });
+    
+        dropzone.addEventListener('dragleave', e => {
+            e.preventDefault();
+            dropzone.classList.remove('border-indigo-600');
+        });
+    
+        dropzone.addEventListener('drop', e => {
+            e.preventDefault();
+            dropzone.classList.remove('border-indigo-600');
+            var file = e.dataTransfer.files[0];
+            displayPreview(file);
+        });
+    
+        var input = document.getElementById('file-upload');
+    
+        input.addEventListener('change', e => {
+            var file = e.target.files[0];
+            displayPreview(file);
+        });
+    
+        function displayPreview(file) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                var preview = document.getElementById('preview');
+                preview.src = reader.result;
+                preview.classList.remove('hidden');
+            };
+        }
+    </script>
+         <button type="submit" class="block w-full bg-[#db7f67] mt-4 py-2 rounded-2xl text-white font-semibold mb-2">REGISTER MY DONATION </button>
+               
+      
+
+      
+
+       
+      
+         
+
      
-        <label class="w-96 ml-4 mt-4 rounded-lg flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-400">
+        <!-- <label class="w-96 ml-4 mt-4 rounded-lg flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-400">
             <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                 <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
             </svg>
@@ -122,7 +278,60 @@
                                 
             </form>
         </div>
-    </div>
+    </div> -->
 </body>
 </html>
-1
+</head>
+    <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
+</head>
+<body>
+    <script>
+
+    function verifyPayment(payload) {
+        $.ajax({
+            url: "{% url 'verify_payment' %}",
+            type: "POST",
+            data: payload,
+            dataType: 'json',
+            success: function (response) { alert(response) },
+            error: function (error) { alert(error.responseJSON['message']) }
+        });
+    }
+
+
+        
+        var config = {
+            // replace the publicKey with yours
+            "publicKey": "test_public_key_a114a31b9677404eaa85b6ffb5246097",
+            "productIdentity": "1234567890",
+            "productName": "Dragon",
+            "productUrl": "http://gameofthrones.wikia.com/wiki/Dragons",
+            "paymentPreference": [
+                "KHALTI",
+                "EBANKING",
+                "MOBILE_BANKING",
+                "CONNECT_IPS",
+                "SCT",
+                ],
+            "eventHandler": {
+                onSuccess (payload) {
+                    // hit merchant api for initiating verfication
+                    console.log(payload);
+                },
+                onError (error) {
+                    console.log(error);
+                },
+                onClose () {
+                    console.log('widget is closing');
+                }
+            }
+        };
+
+        var checkout = new KhaltiCheckout(config);
+        var btn = document.getElementById("payment-button");
+        btn.onclick = function () {
+            // minimum transaction amount must be 10, i.e 1000 in paisa.
+            checkout.show({amount :10000});
+        }
+    </script>
+

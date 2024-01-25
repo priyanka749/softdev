@@ -187,6 +187,10 @@ class other_animals(models.Model):
     about_it= models.TextField()
     image = models.ImageField(upload_to='pet_images/', max_length=250, null=True, default='default_image.jpg')
 
+    animal_Description = models.CharField(max_length=1000,default='')
+    animal_History = models.CharField(max_length=1000,default='Sorry we do not have much history on this Animal.')
+    about_species = models.CharField(max_length=1000,default='specific')
+    
     def __str__(self):
         return self.animal
 
@@ -201,10 +205,7 @@ class Donation_data(models.Model):
 
     image = models.ImageField(upload_to='donation_images/', null=True, blank=True)
 
-    animal_Description = models.CharField(max_length=1000,default='')
-    animal_History = models.CharField(max_length=1000,default='Sorry we do not have much history on this Animal.')
-    about_species = models.CharField(max_length=1000,default='specific')
-    
+  
     def __str__(self):
         return f"Donation #{self.donate_id} - {self.full_name}"
 
@@ -248,3 +249,5 @@ class ContactMessage(models.Model):
     def __str__(self):
         return self.name    
 from django.db import models
+
+
