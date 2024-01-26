@@ -14,6 +14,7 @@
 <body class="bg-white">
   <header>
     <div class="banner h-6">Let us begin with your pet adoption journey</div>
+
     <nav class="shadow-xl flex justify-between px-10">
       <div id="logo">
         <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,29 +28,39 @@
         Furry <br />paws
       </div>
 
-      <ul class="flex justify-between w-3/5">
-        <div class="flex flex-row space-x-8">
-          <li>
-            <a href="/aboutus/">About Us</a>
-          </li>
+        <ul class="flex justify-between w-3/5">
+            <div class="flex flex-row space-x-8">
+                <li>
+                    <a href="/aboutus/">About Us</a>
+                </li>
 
-          <li>
-            <a href="/contact/">Contact Us</a>
-          </li>
-        </div>
+                <li>
+                    <a href="/contact_view/">Contact Us</a>
+                </li>
+            </div>
 
-        <div class="flex flex-row space-x-8 mr-36">
-          <li>
-            <a href="/login/">LOGIN</a>
-          </li>
+            {% if user.is_authenticated %}
+                <!-- User is logged in, show logout button -->
+                <div class="flex flex-row space-x-8 mr-36">
+                    <li>
+                        <a href="/logout_view/">Logout</a>
+                    </li>
+                </div>
+            {% else %}
+                <!-- User is not logged in, show login and signup buttons -->
+                <div class="flex flex-row space-x-8 mr-36">
+                    <li>
+                        <a href="/login_view/">Login</a>
+                    </li>
 
-          <li>
-            <a href="/signup/">SIGN-UP</a>
-          </li>
-        </div>
-      </ul>
+                    <li>
+                        <a href="/signup/">Sign-Up</a>
+                    </li>
+                </div>
+            {% endif %}
+        </ul>
     </nav>
-  </header>
+</header>
 <!--------------------------------------------------------------------------------------------------------------------------------------------------------  -->
 <div class=" border lg:mx-48 lg:my-12 md:mx-10 md:my-8 sm:mx-10 sm:my-8 rounded-lg border-[#db7f67] shadow-xl">
   <div class="flex ">
@@ -67,33 +78,33 @@
     </div>
   
     <!-- Description taking up the right half of the page -->
-    <div class=" lg:w-1/2 p-8 lg:p-5 lg:-ml-12 sm:p-5 sm:-ml-24">
-        <div class="">
-          <p class="text-5xl font-semibold mb-6"> {{ pet.name }}</p>
-            <div class="border border-[#db7f67] rounded-lg mb-8 shadow-lg">
-              
-              <p class="m-5 text-xl font-semibold  mt-2"> Age: {{ pet.age }} </p>
-              <p class="m-5 text-xl font-semibold  mt-2"> Color: {{ pet.color }} </p>
-              <p class="m-5 text-xl font-semibold  mt-">Breed: {{pet.breed}}</p>
-              <p class="m-5 text-xl font-semibold  mt-2">Weight: {{pet.weight}}</p>
-              <p class="m-5 text-xl font-semibold  mt-2">Behaviour: {{pet.behavior}}</p>
-            </div>
-            <form action="{% url 'tryadopt' %}" method="POST">
+    <div class="">
+      <p class="text-5xl font-semibold mb-6"> {{ pet.name }}</p>
+      <div class="border border-[#db7f67] rounded-lg mb-8 shadow-lg">
+          
+          <p class="m-5 text-xl font-semibold  mt-2"> Age: {{ pet.age }} </p>
+          <p class="m-5 text-xl font-semibold  mt-2"> Color: {{ pet.color }} </p>
+          <p class="m-5 text-xl font-semibold  mt-">Breed: {{ pet.breed }}</p>
+          <p class="m-5 text-xl font-semibold  mt-2">Weight: {{ pet.weight }}</p>
+          <p class="m-5 text-xl font-semibold  mt-2">Behaviour: {{ pet.behavior }}</p>
+          <p class="m-5 text-xl font-semibold  mt-2">Behaviour: {{ pet.id }}</p>
+      </div>
+      <div class="flex flex-row justify-evenly">
+          <form action="{% url 'tryadopt' %}" method="POST">
               {% csrf_token %}
               <button type="submit" class="bg-[#FFB4A1] text-white font-bold py-2 px-4 rounded">
                   Adopt Pet
-              </button>
+              </button>          
           </form>
-
-        </div>
-    </div>
+      </div>
+   </div>
   
   </div>
 
   <div>        
           <div class="sm:mx-2 sm:my-2 md:mx-5 md:my-5 lg:mx-8 lg:my-8 flex lg:flex-row sm:flex-col justify-evenly ">
-            <p class="p-5 lg:w-1/2 text-xl border border-[#db7f67] rounded-lg m-2 -mt-5 md:w-full"> more: {{pet.dog_Description}}</p>
-          ` <p class="p-5 lg:w-1/2 text-xl border border-[#db7f67] rounded-lg m-2 -mt-5  "> history: {{pet.dog_History}}</p>
+            <p class="p-5 lg:w-1/2 text-xl border border-[#db7f67] rounded-lg m-2 -mt-5 md:w-full"> more: {{pet.Description}}</p>
+           <p class="p-5 lg:w-1/2 text-xl border border-[#db7f67] rounded-lg m-2 -mt-5  "> history: {{pet.History}}</p>
           </div>
   </div>
   
@@ -119,8 +130,6 @@
   }
 </style>
 
-
-  <script src="your-javascript-file.js"></script>
 
     <footer id="footer" class="footer bg-[#db7f67] border border-[#f6edeb] hover:bg-[#f6edeb]">
         <div class="container">

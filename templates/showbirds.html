@@ -41,30 +41,40 @@
         Furry <br />paws
       </div>
 
-      <ul class="flex justify-between w-3/5">
-        <div class="flex flex-row space-x-8">
-          <li>
-            <a href="/aboutus/">About Us</a>
-          </li>
+        <ul class="flex justify-between w-3/5">
+            <div class="flex flex-row space-x-8">
+                <li>
+                    <a href="/aboutus/">About Us</a>
+                </li>
 
-          <li>
-            <a href="/contact/">Contact Us</a>
-          </li>
-        </div>
+                <li>
+                    <a href="/contact_view/">Contact Us</a>
+                </li>
+            </div>
 
-        <div class="flex flex-row space-x-8 mr-36">
-          <li>
-            <a href="/login/">LOGIN</a>
-          </li>
+            {% if user.is_authenticated %}
+                <!-- User is logged in, show logout button -->
+                <div class="flex flex-row space-x-8 mr-36">
+                    <li>
+                        <a href="/logout_view/">Logout</a>
+                    </li>
+                </div>
+            {% else %}
+                <!-- User is not logged in, show login and signup buttons -->
+                <div class="flex flex-row space-x-8 mr-36">
+                    <li>
+                        <a href="/login_view/">Login</a>
+                    </li>
 
-          <li>
-            <a href="/signup/">SIGN-UP</a>
-          </li>
-        </div>
-      </ul>
+                    <li>
+                        <a href="/signup/">Sign-Up</a>
+                    </li>
+                </div>
+            {% endif %}
+        </ul>
     </nav>
-
-  </header>
+</header>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
   <form action="/showbirds/" method="post" id="showbirds">
 

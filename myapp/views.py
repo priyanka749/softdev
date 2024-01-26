@@ -7,7 +7,7 @@ from django.db.models.query import QuerySet
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render, get_list_or_404
 from django.contrib import messages
-from .models import Donation_data
+from .models import Donation_data, Favorites
 from .models import ContactMessage
 from django.views.generic import ListView
 import json
@@ -218,8 +218,6 @@ def profile(request, pet_id, animal_type):
 
     return render(request, 'profile.html', data)
 
-
-
 from .models import Cats 
 # ONLY FOR CATS
 def showcats(request):
@@ -373,3 +371,22 @@ def TryAdopt(request):
 def logout_view(request):
     logout(request)
     return redirect('login_view')  # Redirect to your desired page after logout
+
+
+@login_required
+def add_to_favorites(request, animal_id):
+    
+    # Get the user and animal objects
+    user = request.user
+    animal = Cats.objects.get(id=animal_id)
+
+    # Check if the animal is already in favorites for the user
+    if Favorites.objects.filter(user=user, animal_id=animal_id).exists():
+        messages.warning(request, "This animal is already in your favorites.")
+    else:
+        # If not, add it to favorites
+        Favorites.objects.create(user=user, animal_id=animal_id)
+        messages.success(request, f"{animal.name} has been added to your favorites!")
+
+    # Redirect to the animal's profile page or any other appropriate page
+    return redirect('animal_profile', animal_id=animal_id)

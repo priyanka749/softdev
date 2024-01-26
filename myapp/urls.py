@@ -38,7 +38,9 @@ urlpatterns =[
   
     path('logout_view/', logout_view, name='logout_view'), 
     path('api/verify_payment',verify_payment,name='verify_payment'),
-    path('verify_payment/', verify_payment, name='verify_payment'),  
+    path('verify_payment/', verify_payment, name='verify_payment'), 
+     path('add_to_favorites/<int:animal_id>/', add_to_favorites, name='add_to_favorites'),
+ 
 ]
 
 # Serving media files in development
