@@ -146,6 +146,7 @@
     /*    padding: 24px;*/
     transition: var(--hover-timing);
     cursor: pointer;
+    align-items: center;
   }
   
   .card-large {
@@ -180,7 +181,7 @@
   }
   
   .card-large > .card-image {
-    aspect-ratio: 3/2;
+    aspect-ratio: 3/3;
   }
   
   .card-image > img {

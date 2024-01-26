@@ -54,7 +54,7 @@
 <div class=" border lg:mx-48 lg:my-12 md:mx-10 md:my-8 sm:mx-10 sm:my-8 rounded-lg border-[#db7f67] shadow-xl">
   <div class="flex ">
     <!-- Image taking up the left half of the page (smaller width) -->
-    <div class="flex items-center w-96 md:mx-8 md:my-8 sm:m-2 sm:p-5 sm:mt-16 lg:m-1 overflow-hidden">
+    <div class="w-96 md:mx-8 md:my-8 sm:m-2 sm:p-5 sm:mt-16 lg:m-10">
         {% if pet.image %}
             <div class="mb-4 md:m-2">
                 <img src="/media/{{ pet.image }}" alt="Cat Image" class="w-3/4 lg:w-full h-auto rounded-lg">
@@ -78,23 +78,22 @@
               <p class="m-5 text-xl font-semibold  mt-2">Weight: {{pet.weight}}</p>
               <p class="m-5 text-xl font-semibold  mt-2">Behaviour: {{pet.behavior}}</p>
             </div>
-
-            <button id="adoptButton" class="bg-[#FFB4A1] text-white font-bold py-2 px-4 rounded">
-              Adopt Pet
-          </button>
-<!-- 
-            <button id="ENQUIRY" class="bg-[#FFB4A1] text-white font-bold py-2 px-4 rounded">
-              Adopt Pet
-          </button> -->
+            <form action="{% url 'tryadopt' %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="bg-[#FFB4A1] text-white font-bold py-2 px-4 rounded">
+                  Adopt Pet
+              </button>
+          </form>
 
         </div>
-    </div>     
+    </div>
+  
   </div>
-  <div>
-        
-          <div class="sm:mx-2 sm:my-2 md:mx-5 md:my-5 lg:mx-8 lg:my-8 flex lg:flex-row sm:flex-col  ">
-            <p class="w-full text-xl border rounded-lg m-2"> MORE: {{pet.dog_Description}}</p>
-          ` <p class="border rounded-lg"> HISTORY: {{pet.dog_History}}</p>
+
+  <div>        
+          <div class="sm:mx-2 sm:my-2 md:mx-5 md:my-5 lg:mx-8 lg:my-8 flex lg:flex-row sm:flex-col justify-evenly ">
+            <p class="p-5 lg:w-1/2 text-xl border border-[#db7f67] rounded-lg m-2 -mt-5 md:w-full"> more: {{pet.dog_Description}}</p>
+          ` <p class="p-5 lg:w-1/2 text-xl border border-[#db7f67] rounded-lg m-2 -mt-5  "> history: {{pet.dog_History}}</p>
           </div>
   </div>
   

@@ -1,12 +1,13 @@
 from imaplib import _Authenticator
+from multiprocessing import AuthenticationError
 from typing import Any
 from django.contrib.auth import authenticate, login
-# from myapp.models import User_profile
+# from myapp.models import User
 from django.db.models.query import QuerySet
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render, get_list_or_404
 from django.contrib import messages
-from .models import Donation_data, User_profile
+from .models import Donation_data
 from .models import ContactMessage
 from django.views.generic import ListView
 import json
@@ -15,7 +16,8 @@ from django.shortcuts import render
 from .models import other_animals
 from .models import DogAdoption 
 from django.db.models import Q
-
+from django.contrib.auth import logout
+from django.contrib.auth.models import User
 def SearchView(request):
     template_name = 'show_more.html'
     context_object_name = 'posts'
@@ -46,20 +48,21 @@ def login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
-        user = authenticate(request, email=email, password=password)
-        print("hhghi")
-        if user:
+
+        # Authenticate the user
+        user = authenticate(request, username=email, password=password)
+
+        if user is not None:
+            # Log in the user
             login(request, user)
-            # Redirect to the dashboard or any other page upon successful login
-            print("hi")
-            return redirect('/dash')
+            # Redirect to a success page. You can replace 'home' with your desired URL.
+            return redirect('dash')
         else:
-            # Handle invalid login credentials (e.g., show an error message)
-            print("h32344ri")
+            # Return an invalid login message or perform other actions
             return render(request, 'login.html', {'error_message': 'Invalid login credentials'})
 
-    # If the request method is not POST, render the login page
     return render(request, 'login.html')
+
 
 
 from django.shortcuts import render, redirect
@@ -71,25 +74,22 @@ def signup(request):
 
 def save(request):
     if request.method == 'POST':
-        print("helo")
         name = request.POST.get('name_input')
         email = request.POST.get('email_input')
         password = request.POST.get('password_input')
         confirm_password = request.POST.get('con_password_input')
-        print(name)
-        print(email)
-     
-        new_user = User_profile.objects.create(name=name, email=email, password=password)
-        # new_user.name = name  # Set the user's first name
-        # user.is_active = False  # Account needs to be activated via email confirmation
+
+        # Create a new user using the create_user method
+        new_user = User.objects.create_user(username=email, email=email, password=password)
+        new_user.first_name = name  # Set the first name (assuming 'name' is the first name field)
+
+        # Save the user instance
         new_user.save()
 
-        # messages.success(request, 'Your account has been created. Please check your email for confirmation.')
-        return redirect('login')  # Replace 'login' with your login URL name
-      
-    return render(request, 'signup.html')  # Render the signup page
+        # Your remaining code...
+        return redirect('login_view')
 
-
+    return render(request, 'signup.html')
 
 
 def contact_view(request):
@@ -325,7 +325,6 @@ def adoption_form(request):
         return redirect("dash")  # Redirect to a success URL after successful form submission
     return render(request, 'adoption_form.html')
 
-
 import requests
 import json 
 
@@ -349,7 +348,6 @@ def verify_payment(request):
    "Authorization": "test_secret_key_509ae363986140abbe09ce09cafaa1fb"
    }
    
-
    response = requests.post(url, payload, headers = headers)
    
    response_data = json.loads(response.text)
@@ -364,3 +362,14 @@ def verify_payment(request):
    pp.pprint(response_data)
    
    return JsonResponse(f"Payment Done !! With IDX. {response_data['user']['idx']}",safe=False)
+
+from django.contrib.auth.decorators import login_required
+@login_required(login_url='/login_view')  # Replace 'login' with the actual URL name or path of your login view
+def TryAdopt(request):
+    # Your view logic for the 'tryadopt' page goes here
+    return render(request, 'adoption_form.html')
+
+@login_required(login_url='/login_view')
+def logout_view(request):
+    logout(request)
+    return redirect('login_view')  # Redirect to your desired page after logout

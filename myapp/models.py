@@ -3,10 +3,19 @@ from ckeditor.fields import RichTextField
 from django.db import models
 from django.db.models import ImageField
 
-class User_profile(models.Model):
-    name = models.CharField(max_length=128)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=128)
+from django.core.validators import EmailValidator, MinLengthValidator
+from django.db import models
+from django.contrib.auth.backends import ModelBackend
+
+
+# class User(models.Model):
+#     user_id=models.AutoField(primary_key=True)
+#     name = models.CharField(max_length=128)
+#     email = models.EmailField(unique=True)
+#     password = models.CharField(max_length=128)
+    
+#     def __str__(self):
+#         return self.user_id
 
 from django.db import models
 
