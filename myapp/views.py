@@ -166,7 +166,6 @@ def showpets(request):
         weight = request.POST.get('sizeInput')
         dog_Description=request.POST.get('dog_Description')
         
-
         # Filter the queryset based on form data
         animalData = Animal_dog.objects.filter(
             Q(name__icontains=petname),
