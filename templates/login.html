@@ -79,4 +79,14 @@
 </body>
 
 
+  {% if error_message %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            alert("{{ error_message|safe }}");
+        });
+    </script>
+{% endif %}
+
+
+
 </html>

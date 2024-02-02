@@ -18,6 +18,7 @@ from .models import DogAdoption
 from django.db.models import Q
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
+
 def SearchView(request):
     template_name = 'show_more.html'
     context_object_name = 'posts'
@@ -44,21 +45,26 @@ def show_more(request):
 
     return render(request, 'show_more.html', context)
 
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+
 def login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        # Authenticate the user
+        if not email or not password:
+            return render(request, 'login.html', {'error_message': 'Both email and password are required'})
+
         user = authenticate(request, username=email, password=password)
 
         if user is not None:
-            # Log in the user
+            
             login(request, user)
-            # Redirect to a success page. You can replace 'home' with your desired URL.
+         
             return redirect('dash')
         else:
-            # Return an invalid login message or perform other actions
+          
             return render(request, 'login.html', {'error_message': 'Invalid login credentials'})
 
     return render(request, 'login.html')
@@ -72,6 +78,9 @@ def signup(request):
       
     return render(request, 'signup.html')  # Render the signup page
 
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
+
 def save(request):
     if request.method == 'POST':
         name = request.POST.get('name_input')
@@ -79,14 +88,22 @@ def save(request):
         password = request.POST.get('password_input')
         confirm_password = request.POST.get('con_password_input')
 
-        # Create a new user using the create_user method
-        new_user = User.objects.create_user(username=email, email=email, password=password)
-        new_user.first_name = name  # Set the first name (assuming 'name' is the first name field)
+      
+        if not name or not email or not password or not confirm_password:
+            return render(request, 'signup.html', {'error_message': 'All fields are required'})
 
-        # Save the user instance
+        if password != confirm_password:
+            return render(request, 'signup.html', {'error_message': 'Passwords do not match'})
+
+      
+        if User.objects.filter(email=email).exists():
+            return render(request, 'signup.html', {'error_message': 'Email is already registered'})
+
+        new_user = User.objects.create_user(username=email, email=email, password=password)
+        new_user.first_name = name  
         new_user.save()
 
-        # Your remaining code...
+     
         return redirect('login_view')
 
     return render(request, 'signup.html')
@@ -127,15 +144,31 @@ def aboutus(request):
     return render(request,'aboutus.html')
 
 
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
+
 def contact_view(request):
     if request.method == 'POST':
-        name = request.POST['name_input']
-        email = request.POST['email_input']
-        telephone = request.POST['telephone_input']
-        subject = request.POST['subject_input']
-        message=request.POST['message_input']
-        print(name,email,telephone,subject,message)
-       
+        name = request.POST.get('name_input', '')
+        email = request.POST.get('email_input', '')
+        telephone = request.POST.get('telephone_input', '')
+        subject = request.POST.get('subject_input', '')
+        message = request.POST.get('message_input', '')
+
+        if not (telephone.isdigit() and len(telephone) == 10):
+          
+            print("Invalid telephone number. It should be a 10-digit number.")
+          
+        try:
+            validate_email(email)
+        except ValidationError:
+    
+            print("Invalid email format or empty email.")
+         
+
+
         c = ContactMessage.objects.create(
             name=name,
             email=email,
@@ -145,13 +178,13 @@ def contact_view(request):
         )
  
         c.save()
-        
+
     return render(request, 'contact_view.html')
-   
+
 
 
 from django.shortcuts import render
-from .models import Animal_dog  # Import your Animal model
+from .models import Animal_dog  
 from django.http import HttpResponse
 
 def showpets(request):
@@ -290,42 +323,57 @@ def save_donateInfo(request):
         record.save()
     return render(request, 'donation_form.html') 
 
+from .models import Animal_dog, DogAdoption, AdoptionApplication
+
 def adoption_form(request):
+
+
     if request.method == 'POST':
-        # Retrieve form data directly from request.POST
+     
         name = request.POST.get('name_input')
         email = request.POST.get('email_input')
         phone = request.POST.get('telephone_input')
-        country = request.POST.get('country')
-        zip_code = request.POST.get('zipCode')
+        petname_input=request.POST.get('petname_input')
+        breed=input=request.POST.get('Breed')
+     
         city = request.POST.get('city')
-        petname = request.POST.get('petname_input')
-        petgender = request.POST.get('petgender')
-        dogBreed = request.POST.get('dogBreed')
         experience = request.POST.get('Experience')
         reason_for_adoption = request.POST.get('Reason')
 
-        # Create and save the DogAdoption model instance
-        adoption_instance = DogAdoption.objects.create(
+        if not (phone.isdigit() and len(phone) == 10):
+            messages.error(request, "Invalid telephone number. It should be a 10-digit number.")
+            return render(request, 'adoption_form.html')
+
+       
+        try:
+            validate_email(email)
+        except ValidationError:
+            messages.error(request, "Invalid email format.")
+            return render(request, 'adoption_form.html')
+ 
+
+
+
+
+                # Create and save the AdoptionApplication model instance
+        application_instance = AdoptionApplication.objects.create(
             name=name,
+            pet_name=petname_input,
             email=email,
             telephone=phone,
-            country=country,
-            zip_code=zip_code,
             city=city,
-            petname=petname,
-            petgender=petgender,
-            dogBreed=dogBreed,
+            breed=breed,
             experience=experience,
             reason_for_adoption=reason_for_adoption,
         )
-        return redirect("dash")  # Redirect to a success URL after successful form submission
+    
+    messages.success(request, "Adoption application submitted successfully!")
     return render(request, 'adoption_form.html')
 
 import requests
 import json 
 
-from django.http import JsonResponse
+from django.http import JsonResponse    
 from django.shortcuts import render,redirect
 from django.views.decorators.csrf import csrf_exempt
 
@@ -363,8 +411,15 @@ def verify_payment(request):
 from django.contrib.auth.decorators import login_required
 @login_required(login_url='/login_view')  # Replace 'login' with the actual URL name or path of your login view
 def TryAdopt(request):
-    # Your view logic for the 'tryadopt' page goes here
-    return render(request, 'adoption_form.html')
+        chosen_pet = Animal_dog.objects.get(pet_id=9999)
+
+        context={}
+            # Update the context with the necessary data
+        context.update({
+            "petname": chosen_pet.name,
+            "Breed": chosen_pet.breed,
+        })
+        return render(request, 'adoption_form.html',context)
 
 @login_required(login_url='/login_view')
 def logout_view(request):
@@ -389,3 +444,6 @@ def add_to_favorites(request, animal_id):
 
     # Redirect to the animal's profile page or any other appropriate page
     return redirect('animal_profile', animal_id=animal_id)
+
+def question(request):
+        return render(request,'question.html')

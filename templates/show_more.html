@@ -23,6 +23,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/tailwindcss/base.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/tailwindcss/utilities.css' %}">
 
+  <title> More Animals</title>
 </head>
 
 
@@ -103,18 +104,20 @@
       <div class="flex flex-wrap justify-evenly my-11 ml-5 mt-5">
         {% if posts %}
             {% for n in posts %}
+            <a href="{% url 'profile' animal_type='other_animal' pet_id=n.animal_id %}">
                 <div class="flex flex-col bg-white w-52 mr-8 h-80 -ml-4 rounded-lg border border-[#db7f67] border-2 mt-6 hover:shadow-xl">
                     <div class="flex flex-col items-center justify-center my-4 font-bold">
                         {% if n.image %}
                             <img src="{{ n.image.url }}" alt="Animal Image" class="w-40 h-auto mb-4 rounded-lg">
                         {% else %}
-                            <img src="{% static 'image/aston.jpeg' %}" alt="Default Image" class="w-40 h-auto mb-4 rounded-lg">
+                            <img src="{% static 'image/aston.jpeg' %}" alt="Default Image" class="w-40 h-auto mb-4 rounded-lg object-cover">
                         {% endif %}
-                        <p class="text-xl mb-2"> Name: {{ n.animal }}</p>
+                        <p class="text-xl mb-2">  {{ n.animal }}</p>
                         <p class="text-lg"> Age: {{ n.age }} </p>
-                        <a href="{% url 'profile' animal_type='other_animal' pet_id=n.animal_id %}"> Profile </a>
+                        
                     </div>
                 </div>
+              </a>
             {% endfor %}
         {% else %}
             <!-- <p>No results found. Showing all animals:</p> -->
@@ -125,9 +128,9 @@
                         {% if n.image %}
                             <img src="{{ n.image.url }}" alt="Animal Image" class="w-40 h-auto mb-4 rounded-lg">
                         {% else %}
-                            <img src="{% static 'image/aston.jpeg' %}" alt="Default Image" class="w-40 h-auto mb-4 rounded-lg">
+                            <img src="{% static 'image/aston.jpeg' %}" alt="Default Image" class="w-40 h-auto mb-4 rounded-lg object-cover">
                         {% endif %}
-                        <p class="text-xl mb-2"> Name: {{ n.animal }}</p>
+                        <p class="text-xl mb-2"> {{ n.animal }}</p>
                         <p class="text-lg"> Age: {{ n.age }} </p>
                         <a href="{% url 'profile' animal_type='other_animal' pet_id=n.animal_id %}"> Profile </a>
                     </div>

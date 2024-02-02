@@ -10,7 +10,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <a href="{url 'profile' pet_id=animal.id%}">{{animal.name}}</a>
 
-
+  <title> Adopt Dogs</title>
   <link rel="stylesheet" type="text/css" href="{% static 'css/showpets.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
 
@@ -171,7 +171,7 @@
   {%for n in animalData %}
 <a href="{% url 'profile' animal_type='dog' pet_id=n.pet_id %}">
   <div class="flex flex-col bg-[#f6edeb] w-52 mr-8 h-80  -ml-4 rounded-lg border border-[#db7f67] mt-6 hover:shadow-xl">
-    <div class=" flex flex-col items-center justify-center my-4 font-bold">
+    <div class=" flex flex-col items-center justify-center my-4 font-bold mt-5">
 
       <div class="w-40 h-48 flex items-center">
             {% if n.image %}

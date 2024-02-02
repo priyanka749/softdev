@@ -80,14 +80,14 @@
     <!-- Description taking up the right half of the page -->
     <div class="">
       <p class="text-5xl font-semibold mb-6 mt-8"> {{ pet.name }}</p>
-      <div class="border border-[#db7f67] rounded-lg mb-8 shadow-lg">
+      <div class="border border-[#db7f67] rounded-lg mb-5 shadow-lg">
           
           <p class="m-5 text-xl font-semibold  mt-2"> Age: {{ pet.age }} </p>
           <p class="m-5 text-xl font-semibold  mt-2"> Color: {{ pet.color }} </p>
           <p class="m-5 text-xl font-semibold  mt-">Breed: {{ pet.breed }}</p>
           <p class="m-5 text-xl font-semibold  mt-2">Weight: {{ pet.weight }}</p>
-          <p class="m-5 text-xl font-semibold  mt-2">Behaviour: {{ pet.behavior }}</p>
-          <p class="m-5 text-xl font-semibold  mt-2">Behaviour: {{ pet.id }}</p>
+          <!-- <p class="m-5 text-xl font-semibold  mt-2">Behaviour: {{ pet.behavior }}</p>
+          <p class="m-5 text-xl font-semibold  mt-2">Behaviour: {{ pet.id }}</p> -->
       </div>
       <div class="flex flex-row justify-evenly">
           <form action="{% url 'tryadopt' %}" method="POST">

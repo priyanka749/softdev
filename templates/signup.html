@@ -21,7 +21,10 @@
         margin-right: auto;
     }
 </style>
+
+
 </head>
+
 <body>
 
 <!-- Main container -->
@@ -85,4 +88,31 @@
 
 </div>
 </body>
+
+<script>
+    function validateForm() {
+        var name = document.getElementById('name_input').value;
+        var email = document.getElementById('email_input').value;
+        var password = document.getElementById('password_input').value;
+        var confirmPassword = document.getElementById('con_password_input').value;
+
+
+        if (!name || !email || !password || !confirmPassword) {
+            alert('All fields are required');
+            return false;
+        }
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match');
+            return false;
+        }
+
+        if (name.toLowerCase() === 'false') {
+            alert('Invalid name');
+            return false;
+        }
+
+        return true;
+    }
+</script>
 </html>

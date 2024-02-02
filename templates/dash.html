@@ -43,8 +43,8 @@
           Furry <br />paws
         </div>
   
-          <ul class="flex justify-between w-3/5">
-              <div class="flex flex-row space-x-8">
+          <ul class="flex justify-between w-3/5 lg:flex  md:flex xs:hidden">
+              <div class="flex flex-row space-x-5">
                   <li>
                       <a href="/aboutus/">About Us</a>
                   </li>
@@ -53,10 +53,11 @@
                       <a href="/contact_view/">Contact Us</a>
                   </li>
               </div>
+              
   
               {% if user.is_authenticated %}
                   <!-- User is logged in, show logout button -->
-                  <div class="flex flex-row space-x-8 mr-36">
+                  <div class="flex flex-row space-x-8 mr-10 ">
                       <li>
                           <a href="/logout_view/">Logout</a>
                       </li>
@@ -80,7 +81,7 @@
     <section class="hero ">
       <h1>Your One-Stop To Find your Companion!</h1>  
 
-      <button class=" text-3xl font-semibold text-[#45413e] "> #Donate </button>   
+      <p class=" text-3xl font-semibold text-[#45413e] " > #Donate</p>
     </section>
 
     <section>
@@ -114,8 +115,8 @@
         </li>
       </a>
 
-      <a href="{% url 'showbirds' %}">
-        <li class="card-large card-dark h-64" id="sup-bird">
+      <a  href="{% url 'showbirds' %}">
+        <li class="card-large card-dark  h-64" id="sup-bird">
           <div class="card-image">
             <img src="https://imgs.search.brave.com/8Sndr-Iq2jsa4YDHAaZ7WOk9KSaLxJjcQWjs9Dr_ytY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNjE0/NzE1ODQyL3Bob3Rv/L3R3by1zaW1pbGFy/LWJpcmRzLXRpdG1v/dXNlLXNpdHRpbmct/b24tYS1icmFuY2gu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PU1XbEwxVEh1Qy1r/QW9CNlRDOVZnYktf/SXg1Vm1yd2ZiQlhw/NlNQRm93TDQ9" />
           </div>
@@ -142,12 +143,12 @@
 <!-- donation form  -->
 <div class="flex md:justify-evenly bg-[#f6edeb] lg:mr-40 lg:ml-40 md:mr-20 md:ml-20 sm:mr-20 sm:ml-20 h-72 mt-0  rounded-lg border border-db7f67 hover:shadow-xl p-6 transition-all duration-500">
   <div>
-      <p class="lg:text-4xl md:text-3xl sm:text-3xl text-[#45413e] font-semibold">   
+      <p class="lg:text-4xl md:text-2xl sm:text-2xl text-[#45413e] font-semibold">   
           Paws for a Cause: <br>
           Unleash Love, Support, and Help Provide <br> Fur-ever Homes with Your Donation!
       </p>
-      <p class="text-white text-4xl">
-          <a href="{% url 'save_donateInfo' %}">donate</a>
+      <p class=" lg:mt-6 md:mt-3 text-3xl font-bold text-[#45413e] ">
+          <a href="{% url 'save_donateInfo' %}">Donate</a>
       </p>
   </div>
 
@@ -174,7 +175,7 @@
             >
             <li><a href="/faq/">Make the adoption transition as smooth as possible</a></li>
             
-            <button class="btn-filled-dark">
+            <button  class="btn-filled-dark">
               <span class="material-symbols-outlined"> calendar_month </span
               >READ
             </button>
@@ -187,7 +188,7 @@
           <ul class="mt-12">
             CHECKLIST FOR NEW ADOPTERS<span class="subtitle"
               ></span>           
-            <li style="margin: 2px;"><a href="#">GET ANSWERS TO ALL THE QUESTIONS YOU AVENOT THOUGHT OF FOR YOUR ADOPTION.</a></li>
+            <li style="margin: 2px;"><a href="/question/">GET ANSWERS TO ALL THE QUESTIONS YOU AVENOT THOUGHT OF FOR YOUR ADOPTION.</a></li>
 
             <button class="btn-filled-dark">
               <span class="material-symbols-outlined"> calendar_month </span

@@ -232,22 +232,43 @@ class DogAdoption(models.Model):
         ('experienced', 'Experienced'),
     )
 
+    ANIMAL_CHOICES = [
+        ('dog', 'Dog'),
+        ('cat', 'Cat'),
+        ('bird', 'Bird'),
+        ('others', 'Others'),
+    ]
+
     name = models.CharField(max_length=10,default="hari")
     email = models.EmailField()
     telephone = models.CharField(max_length=20,default="9852182125")
-    country = models.CharField(max_length=100)
-    zip_code = models.CharField(max_length=20)
+
     city = models.CharField(max_length=100)
     
     petname = models.CharField(max_length=10,)
     petgender = models.CharField(max_length=10, choices=GENDER_CHOICES)
-    dogBreed = models.CharField(max_length=100)
+    Breed = models.CharField(max_length=100)
+    pet_type = models.CharField(max_length=100)
     experience = models.CharField(max_length=20, choices=EXPERIENCE_CHOICES)
     reason_for_adoption = models.TextField()
 
     def __str__(self):
         return self.name
     
+    
+class AdoptionApplication(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    pet_name=models.CharField(max_length=255)
+    telephone = models.CharField(max_length=15)
+    city = models.CharField(max_length=255)
+    breed = models.CharField(max_length=255)
+    experience = models.TextField()
+    reason_for_adoption = models.TextField()
+
+    def __str__(self):
+        return self.name
+
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()

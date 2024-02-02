@@ -3,6 +3,7 @@ from .models import Animal_dog
 from .models import ContactMessage
 from .models import Cats
 from .models import Birds
+from .models import AdoptionApplication
 
 from .models import other_animals
 from .models import Donation_data
@@ -17,3 +18,4 @@ admin.site.register(Donation_data)
 admin.site.register(other_animals)
 
 admin.site.register(DogAdoption)
+admin.site.register(AdoptionApplication)

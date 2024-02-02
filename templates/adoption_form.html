@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="{% static 'css/adopcss.css' %}">
 </head>
 <div id="container">
-  <h1>&bull;Dog Adoption Form &bull;</h1>
+  <h1>&bull;Adoption Form &bull;</h1>
   <div class="underline">
   </div>
   <div class="icon_wrapper">
@@ -32,6 +32,26 @@
       
     </svg>
   </div>
+  <div id="messages">
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}{% if not forloop.last %}\n{% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+
+<script>
+  // JavaScript function to display an alert if there are error messages
+  function displayAlert() {
+      var messages = document.getElementById('messages');
+      if (messages && messages.innerText.trim() !== "") {
+          alert(messages.innerText.trim());
+      }
+  }
+
+  // Call the displayAlert function when the page loads
+  window.onload = displayAlert;
+</script>
   <form action="/adoption_form" method="post" id="adoption_form">
     {% csrf_token %} 
     <div class="name">
@@ -49,29 +69,40 @@
     
     <!-- <label for="address">Address:</label> -->
       
-    <div class="zip-city-section">
-      <input type="text" id="country" name="country" placeholder="country" required>
-      <input type="text" id="zipCode" name="zipCode" placeholder="ZIP Code" required>
+    <div class="city">
+     
       <input type="text" id="city" name="city" placeholder="City" required>
     </div>
     
     <div class="petname">
       <label for="name_input"></label>
-      <input type="text" placeholder="Pet Name" name="petname_input" id="petname_input" required>
+      <input type="text" placeholder="{{petname}}" name="petname_input" id="petname_input" value="{{petname}}">
     </div>
 
     <div class="Gender">
       <label for="gender"></label>
-      <select placeholder="pet Gender" name="gender" id="petgender" required>
+      <select placeholder="pet Gender" name="petgender" id="petgender" required>
         <option disabled hidden selected>Gender</option>
         <option>Male</option>
-        <option>Femail </option>
+        <option>Female </option>
       
       </select>
     </div>
-    <div class="DogBreed">
-    <label for="dogBreed"></label>
-    <input type="text" placeholder="DogBreed" id="dogBreed" name="dogBreed" required>
+  
+    <div class="pet type">
+      <label for=""></label>
+      <select placeholder="pet type" name="pet type" id="pet type" required>
+        <option disabled hidden selected>pet type</option>
+        <option>Dog</option>
+        <option>Cat </option>
+        <option>birds </option>
+        <option>others</option>
+
+        <div class="Breed">
+          <label for="Breed"></label>
+          <input type="text" placeholder="{{Breed}}" id="Breed" name="Breed" value="{{Breed}}">
+          
+          
 
     <div class="Experience">
       <label for="experience"></label>
@@ -96,8 +127,6 @@
 </div><!-- // End #container -->
 <script src="{% static 'javascript/adoption_form.js' %}"></script>
 
-
   
 </body>
 </html>
-

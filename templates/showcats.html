@@ -24,7 +24,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/tailwindcss/components.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/tailwindcss/base.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/tailwindcss/utilities.css' %}">
-
+   <title> Adopt Cats</title>
 </head>
 
 <body class="flex flex-col min-h-screen">
@@ -158,9 +158,9 @@
     
       {%for n in catData %}
       
-      <div class="flex flex-col bg-[#f6edeb] w-48 h-72  mt-0 mx-2 rounded-lg border border-[#db7f67] hover:shadow-xl">
+      <div class="flex flex-col bg-[#f6edeb] w-52 mr-8 h-80  -ml-4 rounded-lg border border-[#db7f67] mt-6 hover:shadow-xl">
         <a href="{% url 'profile' animal_type='cat' pet_id=n.cat_id %}">
-        <div class="flex flex-col items-center justify-center my-4 font-bold">
+        <div class=" flex flex-col items-center justify-center my-4 font-bold mt-5">
 
           {% if n.image %}
           <td>
@@ -168,7 +168,7 @@
           </td>
           {% else %}
           <td>
-            <img src="{% static 'image/aston.jpeg' %}" alt="Image Description" class="w-40 h-auto mb-4 rounded-lg">
+            <img src="{% static 'image/aston.jpeg' %}" alt="Image Description" class="w-40 h-auto mb-4 rounded-lg object-cover">
           </td>
           {% endif%}
 
