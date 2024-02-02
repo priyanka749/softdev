@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link src="nav.css">
+  </link>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <a href="{url 'profile' pet_id=animal.id%}">{{animal.name}}</a>
+
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/showpets.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&family=Tinos:wght@700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap" rel="stylesheet">
+
+  <!-- Example paths, adjust based on your project structure -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/tailwindcss/components.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/tailwindcss/base.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/tailwindcss/utilities.css' %}">
+
+  <title> More Animals</title>
+</head>
+
+
+<body class="flex flex-col min-h-screen">
+  <header>
+    <div class="banner h-6">Let us begin with your pet adoption journey</div>
+
+    <nav class="shadow-xl flex justify-between px-10">
+      <div id="logo">
+        <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.8 32H0V21.9849C0 17.1239 4.0116 13.1839 8.96 13.1839H15.2V0.468341C15.2 0.251458 15.3792 0.0754376 15.6 0.0754376C15.7184 0.0754376 15.8308 0.127301 15.9068 0.216883L17.3616 1.92719C18.402 1.07577 19.74 0.563816 21.2 0.563816H22C23.442 0.563816 24.7656 1.06359 25.8 1.89654L27.2932 0.14066C27.3692 0.0514706 27.4812 0 27.6 0C27.8208 0 28 0.175628 28 0.392904V15.3896H23.36C17.528 15.3896 12.8 20.0337 12.8 25.7623V32Z"
+            fill="#45413E" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M29.76 17.0569V12.0875C29.76 12.0836 29.76 12.0797 29.76 12.0758V6.79004C29.76 6.57435 29.9392 6.4 30.16 6.4C30.266 6.4 30.3676 6.44095 30.4424 6.51389L31.9576 7.98784C32.7864 7.42501 33.7936 7.09504 34.88 7.09504C35.97 7.09504 36.9808 7.42735 37.8112 7.99369L39.3176 6.52793C39.3924 6.45499 39.494 6.41404 39.6 6.41404C39.8208 6.41404 40 6.58878 40 6.80408V23.2632C40 28.0883 35.9884 32 31.04 32H14.4V25.7938C14.4 20.969 18.4116 17.0569 23.36 17.0569H29.76Z"
+            fill="#45413E" />
+        </svg>
+        Furry <br />paws
+      </div>
+
+        <ul class="flex justify-between w-3/5">
+            <div class="flex flex-row space-x-8">
+                <li>
+                    <a href="/aboutus/">About Us</a>
+                </li>
+
+                <li>
+                    <a href="/contact_view/">Contact Us</a>
+                </li>
+            </div>
+
+            {% if user.is_authenticated %}
+                <!-- User is logged in, show logout button -->
+                <div class="flex flex-row space-x-8 mr-36">
+                    <li>
+                        <a href="/logout_view/">Logout</a>
+                    </li>
+                </div>
+            {% else %}
+                <!-- User is not logged in, show login and signup buttons -->
+                <div class="flex flex-row space-x-8 mr-36">
+                    <li>
+                        <a href="/login_view/">Login</a>
+                    </li>
+
+                    <li>
+                        <a href="/signup/">Sign-Up</a>
+                    </li>
+                </div>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+    <div class="mt-8 mx-64">
+      
+      <form action="{% url 'show_more' %}" method="get" class="relative  flex w-full flex-wrap items-stretch" > 
+        <input
+          type="text"
+          name="q"
+          class="relative mr-2  block min-w-0 flex-auto rounded-lg border border-solid border-[#f6edeb] bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-[#f6edeb] focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-[#f6edeb] dark:focus:border-[#f6edeb]"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="button-addon3" />
+        <!--Search button-->
+        <button
+          class="relative z-[2] rounded-lg border-2 border-[#db7f67] px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-[#db7f67] hover:bg-opacity-5 focus:outline-none focus:ring-0"
+          type="button"
+          id="button-addon3"
+          data-te-ripple-init>
+          Search
+        </button>
+      </form>
+      
+    </div>
+
+
+      <div class="flex flex-wrap justify-evenly my-11 ml-5 mt-5">
+        {% if posts %}
+            {% for n in posts %}
+            <a href="{% url 'profile' animal_type='other_animal' pet_id=n.animal_id %}">
+                <div class="flex flex-col bg-white w-52 mr-8 h-80 -ml-4 rounded-lg border border-[#db7f67] border-2 mt-6 hover:shadow-xl">
+                    <div class="flex flex-col items-center justify-center my-4 font-bold">
+                        {% if n.image %}
+                            <img src="{{ n.image.url }}" alt="Animal Image" class="w-40 h-auto mb-4 rounded-lg">
+                        {% else %}
+                            <img src="{% static 'image/aston.jpeg' %}" alt="Default Image" class="w-40 h-auto mb-4 rounded-lg object-cover">
+                        {% endif %}
+                        <p class="text-xl mb-2">  {{ n.animal }}</p>
+                        <p class="text-lg"> Age: {{ n.age }} </p>
+                        
+                    </div>
+                </div>
+              </a>
+            {% endfor %}
+        {% else %}
+            <!-- <p>No results found. Showing all animals:</p> -->
+            {% for n in more_animalInfo %}
+                <!-- Display all animals -->
+                <div class="flex flex-col bg-[#f6edeb] w-52 mr-8 h-80 -ml-4 rounded-lg border border-[#db7f67] mt-6">
+                    <div class="flex flex-col items-center justify-center my-4 font-bold">
+                        {% if n.image %}
+                            <img src="{{ n.image.url }}" alt="Animal Image" class="w-40 h-auto mb-4 rounded-lg">
+                        {% else %}
+                            <img src="{% static 'image/aston.jpeg' %}" alt="Default Image" class="w-40 h-auto mb-4 rounded-lg object-cover">
+                        {% endif %}
+                        <p class="text-xl mb-2"> {{ n.animal }}</p>
+                        <p class="text-lg"> Age: {{ n.age }} </p>
+                        <a href="{% url 'profile' animal_type='other_animal' pet_id=n.animal_id %}"> Profile </a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    
+
+      <!-- </div> -->
+
+    </div>
+
+    
+
+  </div>
+
+
+
+  <footer id="footer" class="footer mt-auto bg-[#db7f67] border border-[#f6edeb] hover:bg-[#f6edeb]">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="copyright">
+            &copy; FURRY PAWS - <strong><span>Home to many Animals and a place for ADOPTION</span></strong>
+          </div>
+        </div>
+        <div class="col-md-6">
+
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+</body>
+
+</html>

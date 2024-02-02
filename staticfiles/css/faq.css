@@ -1,0 +1,13 @@
+.pl-20p{
+    padding-left: 2%;
+    
+}
+
+.custom-border {
+    border: 1px solid #6D6875; /* Replace "yourHexColor" with your actual hex color */
+    filter: brightness(100%); /* Adjust the percentage to make it darker */
+}
+
+.p-20p{
+    padding: 2%;
+}
