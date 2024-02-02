@@ -1,89 +1,160 @@
 {% load static %}
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <link src="nav.css"></link>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="aa.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&family=Tinos:wght@700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/aboutus.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="aus.css" />
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/showpets.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+
+
 </head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    /* font-family:'Montserrat', sans-serif; */
+  }
 
-<!-- 6D6875  -->
-<body class="text-base">
-  <header>
-    <div class="banner h-6">Let us begin with your pet adoption journey</div>
+  * {
+    box-sizing: border-box;
+  }
 
-    <nav class="shadow-xl flex justify-between px-10">
-      <div id="logo">
-        <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" clip-rule="evenodd"
-            d="M12.8 32H0V21.9849C0 17.1239 4.0116 13.1839 8.96 13.1839H15.2V0.468341C15.2 0.251458 15.3792 0.0754376 15.6 0.0754376C15.7184 0.0754376 15.8308 0.127301 15.9068 0.216883L17.3616 1.92719C18.402 1.07577 19.74 0.563816 21.2 0.563816H22C23.442 0.563816 24.7656 1.06359 25.8 1.89654L27.2932 0.14066C27.3692 0.0514706 27.4812 0 27.6 0C27.8208 0 28 0.175628 28 0.392904V15.3896H23.36C17.528 15.3896 12.8 20.0337 12.8 25.7623V32Z"
-            fill="#45413E" />
-          <path fill-rule="evenodd" clip-rule="evenodd"
-            d="M29.76 17.0569V12.0875C29.76 12.0836 29.76 12.0797 29.76 12.0758V6.79004C29.76 6.57435 29.9392 6.4 30.16 6.4C30.266 6.4 30.3676 6.44095 30.4424 6.51389L31.9576 7.98784C32.7864 7.42501 33.7936 7.09504 34.88 7.09504C35.97 7.09504 36.9808 7.42735 37.8112 7.99369L39.3176 6.52793C39.3924 6.45499 39.494 6.41404 39.6 6.41404C39.8208 6.41404 40 6.58878 40 6.80408V23.2632C40 28.0883 35.9884 32 31.04 32H14.4V25.7938C14.4 20.969 18.4116 17.0569 23.36 17.0569H29.76Z"
-            fill="#45413E" />
-        </svg>
-        Furry <br />paws
-      </div>
+  .About {
+    display: inline-block;
+    margin: 10%;
+    margin-top: 5%;
+    padding: 10px 20px;
+  }
 
-        <ul class="flex justify-between w-3/5">
-            <div class="flex flex-row space-x-8">
-                <li>
-                    <a href="/aboutus/">About Us</a>
-                </li>
+  .About .Details {
+    float: left;
+    /* display: table; */
+    padding: 15px 60px;
+    font-size: 15px;
+    height: 645px;
+    width: 44%;
+    letter-spacing: 2px;
+    background-color: #ffffff;
+  }
+  
 
-                <li>
-                    <a href="/contact_view/">Contact Us</a>
-                </li>
-            </div>
+  .Details h1 {
+    font-size: 50px;
+    letter-spacing: 5px;
+    font-weight: bold;
+    margin-bottom: 14%;
+  }
 
-            {% if user.is_authenticated %}
-                <!-- User is logged in, show logout button -->
-                <div class="flex flex-row space-x-8 mr-36">
-                    <li>
-                        <a href="/logout_view/">Logout</a>
-                    </li>
-                </div>
-            {% else %}
-                <!-- User is not logged in, show login and signup buttons -->
-                <div class="flex flex-row space-x-8 mr-36">
-                    <li>
-                        <a href="/login_view/">Login</a>
-                    </li>
-                    <li>
-                        <a href="/signup/">Sign-Up</a>
-                    </li>
-                </div>
-            {% endif %}
-        </ul>
-    </nav>
+  .Details p {
+    margin: 1px;
+    letter-spacing: 2px;
+  }
+
+  .About .image {
+    float: right;
+    height: 640px;
+    width: 50%;
+    background-color: #db7f67;
+  }
+
+  .image img {
+    border: 30px solid white;
+    margin-left: -20%;
+    margin-top: 15%;
+    width: 600px;
+    height: 400px;
+    box-shadow: 3px 3px 20px black;
+  }
+</style>
+<header>
+  <div class="banner h-6">Let us begin with your pet adoption journey</div>
+
+  <nav class="shadow-xl flex justify-between px-10">
+    <div id="logo">
+      <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M12.8 32H0V21.9849C0 17.1239 4.0116 13.1839 8.96 13.1839H15.2V0.468341C15.2 0.251458 15.3792 0.0754376 15.6 0.0754376C15.7184 0.0754376 15.8308 0.127301 15.9068 0.216883L17.3616 1.92719C18.402 1.07577 19.74 0.563816 21.2 0.563816H22C23.442 0.563816 24.7656 1.06359 25.8 1.89654L27.2932 0.14066C27.3692 0.0514706 27.4812 0 27.6 0C27.8208 0 28 0.175628 28 0.392904V15.3896H23.36C17.528 15.3896 12.8 20.0337 12.8 25.7623V32Z"
+          fill="#45413E" />
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M29.76 17.0569V12.0875C29.76 12.0836 29.76 12.0797 29.76 12.0758V6.79004C29.76 6.57435 29.9392 6.4 30.16 6.4C30.266 6.4 30.3676 6.44095 30.4424 6.51389L31.9576 7.98784C32.7864 7.42501 33.7936 7.09504 34.88 7.09504C35.97 7.09504 36.9808 7.42735 37.8112 7.99369L39.3176 6.52793C39.3924 6.45499 39.494 6.41404 39.6 6.41404C39.8208 6.41404 40 6.58878 40 6.80408V23.2632C40 28.0883 35.9884 32 31.04 32H14.4V25.7938C14.4 20.969 18.4116 17.0569 23.36 17.0569H29.76Z"
+          fill="#45413E" />
+      </svg>
+      Furry <br />paws
+    </div>
+
+      <ul class="flex justify-between w-3/5">
+          <div class="flex flex-row space-x-8">
+              <li>
+                  <a href="/aboutus/">About Us</a>
+              </li>
+
+              <li>
+                  <a href="/contact_view/">Contact Us</a>
+              </li>
+          </div>
+
+          {% if user.is_authenticated %}
+              <!-- User is logged in, show logout button -->
+              <div class="flex flex-row space-x-8 mr-36">
+                  <li>
+                      <a href="/logout_view/">Logout</a>
+                  </li>
+              </div>
+          {% else %}
+              <!-- User is not logged in, show login and signup buttons -->
+              <div class="flex flex-row space-x-8 mr-36">
+                  <li>
+                      <a href="/login_view/">Login</a>
+                  </li>
+
+                  <li>
+                      <a href="/signup/">Sign-Up</a>
+                  </li>
+              </div>
+          {% endif %}
+      </ul>
+  </nav>
 </header>
-<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<body>
 
-   
-    <div> <p class="flex pt-5 pl-40 text-3xl " > <b>About Furry Paws</b> </p> </div>
 
-    <div class=" pl-20">
-      <div><img class="img-deg pt-10 pl-10 pr-1 " src="https://www.alouetteanimalhospital.ca/wp-content/uploads/sites/308/2022/06/pettips.jpg"></div>
+  <div class="About">
+    <div class="Details">
+      <h1>
+        About Us
+      </h1>
 
-      <div class="flex pt-4 pl-5 pr-10 -ml-500 mr-20 border-black rounded-md bg-[#f6edeb;] f-Inter" >
-        <p class="">
-            Connecting Hearts, Creating Homes: Furry Paws is dedicated to ensuring every pet finds a loving and permanent home. Through compassionate adoption practices, education, and community collaboration, we strive to build a world where no pet is left behind. Join us in making a difference and fostering a future filled with companionship and care.
-                
-                        <br>At Furry Paws, we are driven by a singular mission to create a world where every pet has a loving and permanent home. We believe that every animal deserves a chance to live a life filled with love, care, and companionship.
-                        <br>Our commitment extends beyond merely finding homes for pets; we strive to match each animal with the perfect family, creating lasting connections that enrich both the lives of the pets and their adopters. We are dedicated to providing a safe and nurturing environment for our furry friends while they await their forever homes.
-                        <br>Through a compassionate and responsible adoption process, we aim to raise awareness about the joys and responsibilities of pet ownership. Our team works tirelessly to educate the community on the importance of spaying and neutering, proper veterinary care, and the lifelong commitment required to ensure the well-being of our animal companions.
-                        <br>We also collaborate with local shelters, rescue organizations, and community partners to amplify our impact. Together, we advocate for the welfare of all animals and strive to reduce the number of pets in need.
-                        <br>Join us on our mission to create a world where no pet is left behind. Whether you're looking to adopt, volunteer, or support our cause, together, we can make a difference in the lives of countless animals and build a community of compassion.
-                        <br> you for being a part of our journey towards a future where every pet finds a loving home.
-                        
-        </p>
+      <p>
+        Connecting Hearts, Creating Homes: Furry Paws is dedicated to ensuring every pet finds a loving and permanent
+        home. Through compassionate adoption practices, education, and community collaboration, we strive to build a
+        world where no pet is left behind. Join us in making a difference and fostering a future filled with
+        companionship and care.
+
+        <br>At Furry Paws, we are driven by a singular mission to create a world where every pet has a loving and
+        permanent home. We believe that every animal deserves a chance to live a life filled with love, care, and
+        companionship.
+        <!-- <br>Our commitment extends beyond merely finding homes for pets; we strive to match each animal with the perfect family, creating lasting connections that enrich both the lives of the pets and their adopters. We are dedicated to providing a safe and nurturing environment for our furry friends while they await their forever homes. -->
+        <!-- <br>Through a compassionate and responsible adoption process, we aim to raise awareness about the joys and responsibilities of pet ownership. Our team works tirelessly to educate the community on the importance of spaying and neutering, proper veterinary care, and the lifelong commitment required to ensure the well-being of our animal companions. -->
+        <br>We also collaborate with local shelters, rescue organizations, and community partners to amplify our impact.
+        Together, we advocate for the welfare of all animals and strive to reduce the number of pets in need.
+        <br>Join us on our mission to create a world where no pet is left behind. Whether you're looking to adopt,
+        volunteer, or support our cause, together, we can make a difference in the lives of countless animals and build
+        a community of compassion.
+        <br> you for being a part of our journey towards a future where every pet finds a loving home.
+
+
+      </p>
     </div>
+    <div class="image">
+      <img src="im.jpg" alt="">
     </div>
-    
-  </body>
+  </div>
 
+</body>
+
+</html>
