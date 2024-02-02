@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>New Contact</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <a href="/dash.html"></a>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/tailwind.min.css">
+  <link rel="stylesheet" href="{% static 'css/contactcss.css' %}">
+</head>
+<div id="container">
+  <h1>&bull; Keep in Touch &bull;</h1>
+  <div class="underline">
+  </div>
+  <div class="icon_wrapper">
+    <svg class="icon" viewBox="0 0 145.192 145.192">
+      <svg class="w-32 h-32" viewBox="0 0 128 128" fill="black" xmlns="http://www.w3.org/2000/svg">
+        <path d="M126.82,32.694...[omitted for brevity]...2.132-2.132h-3.297
+          c-1.178,0-2.133,0.955-2.133,2.132
+          c-1.575-0.235-5.532-1.17-6.635-4.547
+          c2.36-1.092,4.109-2.913,4.669-5.097
+          h1.308
+          c0.722,0,1.309-0.584,1.309-1.308
+          v-0.578
+          c0-0.584-0.475-1.056-1.056-1.056
+          h-1.539
+          c-0.542-2." fill="black"/>
+      </svg>
+      
+    </svg>
+  </div>
+  {% comment %} <form action="/contact_view" method="post" id="contact_view"> {% endcomment %}
+    <form action="http://127.0.0.1:8000/contact_view/" method="post">
+    {% csrf_token %} 
+    <div class="name">
+      <label for="name_input"></label>
+      <input type="text" placeholder="My name is" name="name_input" id="name_input" required>
+    </div>
+    <div class="email">
+      <label for="email_input"></label>
+      <input type="email" placeholder="My e-mail is" name="email_input" id="email_input" required>
+    </div>
+    <div class="telephone">
+      <label for="telephone_input"></label>
+      <input type="text" placeholder="My number is" name="telephone_input" id="telephone_input" required>
+    </div>
+    
+    <div class="subject">
+      <label for="subject_input"></label>
+      <select placeholder="Subject line" name="subject_input" id="subject_input" required>
+        <option disabled hidden selected>Subject line</option>
+        <option>I'd like to adopt animal</option>
+        <option>I'd like to know more  about animal </option>
+        <option>I'd like to ask about adoption process </option>
+      </select>
+    </div>
+    <div class="message">
+      <label for="message_input"></label>
+      <textarea name="message_input" placeholder="I'd like to chat about" id="message_input" cols="30" rows="5" required></textarea>
+    </div>
+    <div class="submit">
+      <!-- <input type="submit" value="Send Message" id="form_button" /> -->
+      <button id="form_button" type="submit" class="btn btn-primary bg-blue-500 text-white px-4 py-2">
+        Register
+      </button>
+
+    </div>
+  </form><!-- // End form -->
+</div><!-- // End #container -->

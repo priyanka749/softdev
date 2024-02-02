@@ -1,11 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
-    <a href="{% url 'signup' %}">Sign Up</a>
-    <a href="/dash">Home</a>
+    <a href="{% url 'signup' %}"></a>
+    <a href="/dash"></a>
     <link rel="stylesheet" href="suyog_css/login.css">
     <script src="static/javascript/login.js"></script>
     <link rel="stylesheet" href="style_css/nav.css">
@@ -29,12 +30,7 @@
         .border {
             border: 1px solid #000;
         }
-        /* Add your custom styles here */
-        /* Example: 
-        .featured-image {
-            width: 400px;
-        }
-        */
+       
     </style>
 </head>
 <body>
@@ -43,22 +39,24 @@
         <div class="row border rounded-3 p-3 bg-white shadow box-area">
             <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box">
                 <div class="featured-image mb-3">
-                    <img src="https://www.thesprucepets.com/thmb/4SZ77xgkJ7LzuICCbaxBSTWc2-0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/black-and-white-dog-names-4802651-hero-07314f6dfebf4af7b1a55b61d7183dd8.jpg" class=" object-cover w-100 rounded-4"  alt="">
+                    <img src="{%static 'image/photo.jpg'%}" class=" object-cover w-100 rounded-4"  alt="">
                 </div>
                 <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 800;"></p>
                 <small class="text-white text-wrap text-center" style="width: 17rem; font-family: 'Courier New', Courier, monospace;"></small>
             </div>
-            <form method="post" action="/login" class="col-md-6 right-box custom-border">
+            
+            <form method="post" action="/login_view/"  class="col-md-6 right-box custom-border">
+                {% csrf_token %} 
                 <div class="row align-items-center">
                     <div class="header-text mb-4">
                         <h2>Let's Welcome Furry Paws</h2>
                         <p>Login to start your new journey!</p>
                     </div>
                     <div class="input-group mb-3">
-                        <input name="email" type="text" class="form-control-lg bg-light fs-6" placeholder="Email Address" style="width: 100%" required>
+                        <input name="email" id="email" type="text" class="form-control-lg bg-light fs-6" placeholder="Email Address" style="width: 100%" required>
                     </div>
                     <div class="input-group mb-1">
-                        <input name="password" type="password" class="form-control-lg bg-light fs-6" placeholder="Password" style="width: 100%;" required>
+                        <input name="password" id="password" type="password" class="form-control-lg bg-light fs-6" placeholder="Password" style="width: 100%;" required>
                     </div>
                 </div>
                 <div class="input-group mb-5 d-flex">
@@ -68,14 +66,9 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-primary w-100 fs-6 text-white" style="background-color: #db7f67;">Log in</button>
+                    <button type="submit" class="btn btn-lg btn-primary w-100 fs-6 text-white" style="background-color: #db7f67;">Log in</button>
                 </div>
-                <!-- <div class="input-group mb-3">
-                    <button class="btn btn-lg w-100 fs-6 text-white" style="background-color: #db7f67;">
-                        <img src="images/Google.png" style="width:20px" class="me-2" alt="Google Logo">
-                        <small>Login with Google</small>
-                    </button>
-                </div> -->
+            
                 <div class="row">
                     <small>Dont have an account?<a href="/signup">Sign Up</a></small>
                 </div>
@@ -84,4 +77,16 @@
     </div>
 
 </body>
+
+
+  {% if error_message %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            alert("{{ error_message|safe }}");
+        });
+    </script>
+{% endif %}
+
+
+
 </html>

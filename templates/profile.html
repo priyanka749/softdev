@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+    <link src="nav.css"></link>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/showpets.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+
+</head>
+<body class="bg-white">
+  <header>
+    <div class="banner h-6">Let us begin with your pet adoption journey</div>
+
+    <nav class="shadow-xl flex justify-between px-10">
+      <div id="logo">
+        <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.8 32H0V21.9849C0 17.1239 4.0116 13.1839 8.96 13.1839H15.2V0.468341C15.2 0.251458 15.3792 0.0754376 15.6 0.0754376C15.7184 0.0754376 15.8308 0.127301 15.9068 0.216883L17.3616 1.92719C18.402 1.07577 19.74 0.563816 21.2 0.563816H22C23.442 0.563816 24.7656 1.06359 25.8 1.89654L27.2932 0.14066C27.3692 0.0514706 27.4812 0 27.6 0C27.8208 0 28 0.175628 28 0.392904V15.3896H23.36C17.528 15.3896 12.8 20.0337 12.8 25.7623V32Z"
+            fill="#45413E" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M29.76 17.0569V12.0875C29.76 12.0836 29.76 12.0797 29.76 12.0758V6.79004C29.76 6.57435 29.9392 6.4 30.16 6.4C30.266 6.4 30.3676 6.44095 30.4424 6.51389L31.9576 7.98784C32.7864 7.42501 33.7936 7.09504 34.88 7.09504C35.97 7.09504 36.9808 7.42735 37.8112 7.99369L39.3176 6.52793C39.3924 6.45499 39.494 6.41404 39.6 6.41404C39.8208 6.41404 40 6.58878 40 6.80408V23.2632C40 28.0883 35.9884 32 31.04 32H14.4V25.7938C14.4 20.969 18.4116 17.0569 23.36 17.0569H29.76Z"
+            fill="#45413E" />
+        </svg>
+        Furry <br />paws
+      </div>
+
+        <ul class="flex justify-between w-3/5">
+            <div class="flex flex-row space-x-8">
+                <li>
+                    <a href="/aboutus/">About Us</a>
+                </li>
+
+                <li>
+                    <a href="/contact_view/">Contact Us</a>
+                </li>
+            </div>
+
+            {% if user.is_authenticated %}
+                <!-- User is logged in, show logout button -->
+                <div class="flex flex-row space-x-8 mr-36">
+                    <li>
+                        <a href="/logout_view/">Logout</a>
+                    </li>
+                </div>
+            {% else %}
+                <!-- User is not logged in, show login and signup buttons -->
+                <div class="flex flex-row space-x-8 mr-36">
+                    <li>
+                        <a href="/login_view/">Login</a>
+                    </li>
+
+                    <li>
+                        <a href="/signup/">Sign-Up</a>
+                    </li>
+                </div>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------  -->
+<div class=" border lg:mx-48 lg:my-12 md:mx-10 md:my-8 sm:mx-10 sm:my-8 rounded-lg border-[#db7f67] shadow-xl">
+  <div class="flex ">
+    <!-- Image taking up the left half of the page (smaller width) -->
+    <div class="w-96 md:mx-8 md:my-8 sm:m-2 sm:p-5 sm:mt-16 lg:m-10">
+        {% if pet.image %}
+            <div class="mb-4 md:m-2">
+                <img src="/media/{{ pet.image }}" alt="Cat Image" class="w-3/4 lg:w-full h-auto rounded-lg">
+            </div>
+        {% else %}
+            <div class="mb-4 w-52">
+                <img src="{% static 'image/aston.jpeg' %}" alt="Default Cat Image" class=" object-cover w-full h-full rounded-lg">
+            </div>
+        {% endif %}
+    </div>
+  
+    <!-- Description taking up the right half of the page -->
+    <div class="">
+      <p class="text-5xl font-semibold mb-6 mt-8"> {{ pet.name }}</p>
+      <div class="border border-[#db7f67] rounded-lg mb-8 shadow-lg">
+          
+          <p class="m-5 text-xl font-semibold  mt-2"> Age: {{ pet.age }} </p>
+          <p class="m-5 text-xl font-semibold  mt-2"> Color: {{ pet.color }} </p>
+          <p class="m-5 text-xl font-semibold  mt-">Breed: {{ pet.breed }}</p>
+          <p class="m-5 text-xl font-semibold  mt-2">Weight: {{ pet.weight }}</p>
+          <p class="m-5 text-xl font-semibold  mt-2">Behaviour: {{ pet.behavior }}</p>
+          <p class="m-5 text-xl font-semibold  mt-2">Behaviour: {{ pet.id }}</p>
+      </div>
+      <div class="flex flex-row justify-evenly">
+          <form action="{% url 'tryadopt' %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="bg-[#FFB4A1] text-white font-bold py-2 px-4 rounded">
+                  Adopt Pet
+              </button>          
+          </form>
+      </div>
+   </div>
+  
+  </div>
+
+  <div>        
+          <div class="sm:mx-2 sm:my-2 md:mx-5 md:my-5 lg:mx-8 lg:my-8 flex lg:flex-row sm:flex-col justify-evenly ">
+            <p class="p-5 lg:w-1/2 text-xl border border-[#db7f67] rounded-lg m-2 -mt-5 md:w-full"> more: {{pet.Description}}</p>
+           <p class="p-5 lg:w-1/2 text-xl border border-[#db7f67] rounded-lg m-2 -mt-5  "> history: {{pet.History}}</p>
+          </div>
+  </div>
+  
+</div>
+
+
+</body>
+
+<style>
+
+
+  .absolute-buttons {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+  }
+
+  #adoptButton,
+  #favoritesButton {
+      display: block;
+      margin-bottom: 10px;
+  }
+</style>
+
+
+    <footer id="footer" class="footer bg-[#db7f67] border border-[#f6edeb] hover:bg-[#f6edeb]">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="copyright">
+                        &copy; FURRY PAWS - <strong><span>Home to many Animals and a place for ADOPTION</span></strong>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</html>

@@ -1,0 +1,33 @@
+
+    .footer {
+      font-size: 16px;
+      padding: 10px 0px;
+      color: #db7f67;
+      border-color: #db7f67;
+    }
+
+    .footer .copyright {
+      text-align: left;
+      color: white;
+      padding-left: 20px;
+    }
+
+    .copyright:hover {
+      color: #db7f67;
+    }
+
+    .social-icons {
+      text-align: right;
+    }
+
+    .social-icon {
+      color: #db7f67;
+      font-size: 16px;
+      margin-right: 20px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    #footer:hover {
+      background-color: #f6edeb;
+    }
