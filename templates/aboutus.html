@@ -3,13 +3,28 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="aus.css" />
-
-  <link rel="stylesheet" type="text/css" href="{% static 'css/showpets.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="path/to/node_modules/tailwindcss/dist/tailwind.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+  />
+  <script src="https://cdn.tailwindcss.com"></script>
+ <link rel="stylesheet" href="myproject\templates\Static\css\dash.css">
+ <link rel="stylesheet" type="text/css" href="{% static 'css/dash.css' %}">
+ <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+  <title>Pet Adoption</title>
 
 
 </head>
@@ -44,7 +59,7 @@
   
 
   .Details h1 {
-    font-size: 50px;
+    font-size: 25px;
     letter-spacing: 5px;
     font-weight: bold;
     margin-bottom: 14%;
@@ -52,7 +67,8 @@
 
   .Details p {
     margin: 1px;
-    letter-spacing: 2px;
+    margin-top: 10px;
+    letter-spacing: 1px;
   }
 
   .About .image {
@@ -120,16 +136,18 @@
       </ul>
   </nav>
 </header>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
 <body>
 
 
-  <div class="About">
+  <div class="About mt-10">
     <div class="Details">
-      <h1>
+      <h1 class="-mb-10">
         About Us
       </h1>
 
-      <p>
+      <p class="mt-10">
         Connecting Hearts, Creating Homes: Furry Paws is dedicated to ensuring every pet finds a loving and permanent
         home. Through compassionate adoption practices, education, and community collaboration, we strive to build a
         world where no pet is left behind. Join us in making a difference and fostering a future filled with
@@ -151,7 +169,7 @@
       </p>
     </div>
     <div class="image">
-      <img src="im.jpg" alt="">
+      <img src="{% static 'image/im.jpg' %}" alt="">
     </div>
   </div>
 
